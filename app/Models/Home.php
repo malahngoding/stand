@@ -12,6 +12,6 @@ class Home extends Model
 
     static public function awake()
     {
-        return DB::table('migrations')->get();
+        return DB::table('migrations')->first();
     }
 }

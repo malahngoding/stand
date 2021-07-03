@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     public function home()
     {
         $data = ['message' => 'Welcome to Malah Ngoding!'];

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/keep-awake', [HomeController::class, 'keep_awake'])->name('keep-awake');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -14,5 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/keep-awake', [HomeController::class, 'keep_awake'])->name('keep-awake');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
