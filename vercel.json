@@ -6,11 +6,15 @@
     "rewrites": [
         {
             "source": "/(css|js)/(.*)",
-            "destination": "public/$1/$2"
+            "destination": "/public/$1/$2"
+        },
+        {
+            "source": "/welcome",
+            "destination": "/api/index.php"
         },
         {
             "source": "/(.*)",
-            "destination": "api/index.php"
+            "destination": "/api/index.php"
         }
     ]
 }
