@@ -36,6 +36,8 @@
                         <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
                     </a>
 
+                    <h1>TEST</h1>
+
                     <h1 class="text-5xl font-extrabold tracking-wider text-center text-gray-600">
                         {{ config('app.name') }}
                     </h1>
