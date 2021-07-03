@@ -5,12 +5,12 @@
     },
     "redirects": [
         {
-            "src": "/(css|js)/(.*)",
-            "dest": "public/$1/$2"
+            "source": "/(css|js)/(.*)",
+            "destination": "public/$1/$2"
         },
         {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "source": "/(.*)",
+            "destination": "/api/index.php"
         }
     ]
 }
