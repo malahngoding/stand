@@ -3,14 +3,14 @@
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.3.1" }
     },
-    "redirects": [
+    "rewrites": [
         {
             "source": "/(css|js)/(.*)",
             "destination": "public/$1/$2"
         },
         {
             "source": "/(.*)",
-            "destination": "/api/index.php"
+            "destination": "api/index.php"
         }
     ]
 }
