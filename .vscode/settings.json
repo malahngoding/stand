@@ -15,5 +15,6 @@
         "titleBar.inactiveBackground": "#f0716799",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#f07167"
+    "peacock.color": "#f07167",
+    "deno.enable": true
 }
