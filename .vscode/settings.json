@@ -16,5 +16,5 @@
         "titleBar.inactiveForeground": "#15202b99"
     },
     "peacock.color": "#f07167",
-    "deno.enable": true
+    "git.ignoreLimitWarning": true
 }
