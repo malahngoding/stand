@@ -1,0 +1,7 @@
+{
+    "url": "/api/user/revoke",
+    "type": "POST",
+    "body": {
+        "email": "bot@malahngoding.com"
+    }
+}

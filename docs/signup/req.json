@@ -1,0 +1,10 @@
+{
+    "url": "/api/sign-up",
+    "type": "POST",
+    "body": {
+        "fullName": "Bot Malah Ngoding",
+        "email": "bot@malahngoding.com",
+        "password": "P@ssw0rd!",
+        "passwordCheck": "P@ssw0rd!"
+    }
+}

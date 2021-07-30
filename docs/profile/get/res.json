@@ -1,0 +1,14 @@
+{
+    "body": {
+        "success": true,
+        "profile": {
+            "email": "bot@malahngoding.com",
+            "phoneNumber": "087809892899",
+            "photo": "/uploads/1i291i2e09ie092ei1e.jpg",
+            "dateOfBirth": "17-02-2019",
+            "interestArea": "Mobile",
+            "bio": "Malah ngoding bot merupakan malahngoding bot"
+        },
+        "message": "Data Berhasil didapatkan"
+    }
+}

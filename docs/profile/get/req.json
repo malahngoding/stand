@@ -1,0 +1,7 @@
+{
+    "url": "/api/profile/get",
+    "type": "GET",
+    "body": {
+        "email": "bot@malahngoding.com"
+    }
+}

@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://unpkg.com/tailwindcss/dist/base.css
+ */
+@tailwind base;
+
+/**
+ * Remove the default box-shadow for invalid elements to prevent
+ * inputs in Livewire components showing with a
+ * red border by default in Firefox.
+ *
+ * See: https://github.com/laravel-frontend-presets/tall/issues/7
+ */
+
+* {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+
+::selection {
+    background: #fff4cc; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #fff4cc; /* Gecko Browsers */
+}
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ */
+
+[x-cloak] {
+    display: none!important;
+}
+
+/* Your own custom utilities */
+@layer utilities {
+    .shadow-drop {
+        box-shadow: 0px 4px 0px #18191f;
+    }
+    .shadow-drop:hover {
+        animation-name: shadow-drop-hover;
+        animation-duration: 0.5s;
+    }
+    @keyframes shadow-drop-hover {
+        0% {
+            box-shadow: 0px 4px 0px #18191f;
+        }
+        50% {
+            box-shadow: none;
+        }
+        100% {
+            box-shadow: 0px 4px 0px #18191f;
+        }
+    }
+}

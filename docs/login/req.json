@@ -1,0 +1,8 @@
+{
+    "url": "/api/login",
+    "type": "POST",
+    "body": {
+        "email": "bot@malahngoding.com",
+        "password": "P@ssw0rd!"
+    }
+}

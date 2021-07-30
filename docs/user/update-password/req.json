@@ -1,0 +1,10 @@
+{
+    "url": "/api/user/update-password",
+    "type": "POST",
+    "body": {
+        "email": "bot@malahngoding.com",
+        "password": "password",
+        "new_password": "passworda"
+
+    }
+}
