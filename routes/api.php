@@ -1,6 +1,10 @@
 <?php
 
+
+use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\QuizController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +27,12 @@ Route::get('/echo', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/profile/get/{email}', [ProfileController::class, 'get']);
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
 Route::get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
+
