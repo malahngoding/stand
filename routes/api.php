@@ -21,4 +21,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
 
 
 
-Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/profile/get/{email}', [ProfileController::class, 'get']);
