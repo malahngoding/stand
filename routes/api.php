@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\QuizController;
@@ -31,7 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/profile/get/{email}', [ProfileController::class, 'get']);
+Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
+Route::get('/questions/get', [FlashCardController::class, 'get']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
 Route::get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
