@@ -10,11 +10,15 @@ class FlashCardController extends Controller
 {
     public function get(Request $request)
     {
-        $email = $request->email;
-        $cek = DB::table('users')->where('email', $request->email)->first();
+        // $email = $request->email;
+        // $cek = DB::table('users')->where('email', $request->email)->first();
 
-        $getprofile = FlashCardModel::getData();
-        return response()->json($getprofile);
+        $NumberGroupName=1;
+        // $getQuizGroup = FlashCardModel::getQuizGroup($email);
+
+        $getQuestion = FlashCardModel::getData($NumberGroupName);
+
+        return response()->json($getQuestion);
 
         // if ($email === null) {
         //     return response()->json(
@@ -30,7 +34,7 @@ class FlashCardController extends Controller
         //         [
         //             "message" => ["Data Berhasil didapatkan"],
         //             "success" => true,
-        //             "profile" => $getprofile,
+        //             "profile" => $getQuestion,
 
         //         ]
         //     );
