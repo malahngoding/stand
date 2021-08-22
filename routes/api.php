@@ -35,5 +35,5 @@ Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
 Route::get('/questions/get', [FlashCardController::class, 'get']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
-Route::get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
+Route::get('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->name('quiz-group-name');
 

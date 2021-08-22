@@ -19,6 +19,13 @@ class FlashCardModel extends Model
 
         return $user;
     }
+    public static function getQuizGroupName()
+    {
+        $get = DB::table('quiz_question_group')
+            ->get();
+
+        return $get;
+    }
     // public static function getQuizGroup($email)
     // {
 

@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FlashCardController extends Controller
 {
+    public function getQuizGroupName(Request $request)
+    {
+        $email = $request->email;
+        $get = FlashCardModel::getQuizGroupName()
+            ->where('email', $email);
+
+        return response()->json([$email]);
+    }
+
     public function get(Request $request)
     {
         // $email = $request->email;
@@ -19,7 +29,6 @@ class FlashCardController extends Controller
         $getQuestion = FlashCardModel::getData($NumberGroupName);
 
         return response()->json($getQuestion);
-
         // if ($email === null) {
         //     return response()->json(
         //         [
@@ -34,6 +43,7 @@ class FlashCardController extends Controller
         //         [
         //             "message" => ["Data Berhasil didapatkan"],
         //             "success" => true,
+        //             "profile" => $getprofile,
         //             "profile" => $getQuestion,
 
         //         ]
