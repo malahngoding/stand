@@ -19,4 +19,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
     return $request->user();
 });
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
+<<<<<<< Updated upstream
 Route::get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
+=======
+Route::get('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->name('quiz-group-name');
+>>>>>>> Stashed changes
