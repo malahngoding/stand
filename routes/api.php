@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
 
 
 Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
-Route::get('/questions/get', [FlashCardController::class, 'get']);
+Route::get('/questions/get/{id}', [FlashCardController::class, 'get']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
 Route::get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');

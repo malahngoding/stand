@@ -8,17 +8,29 @@ use Illuminate\Support\Facades\DB;
 
 class FlashCardController extends Controller
 {
+
     public function get(Request $request)
     {
-        // $email = $request->email;
-        // $cek = DB::table('users')->where('email', $request->email)->first();
+        $array_question = [];
+        // $id=1;
+        $id=$request->id;
+        $getQuestion = FlashCardModel::getData($id);
+        foreach ($getQuestion as $item) {
+            array_push($array_question,['groupname' => $item->groupname,
+            'quizgroup_id' => $item->quizgroup_id, 'picture' => $item->picture,
+            'score' => $item->score,
+            'question' => $item->question,
+            'correct_answer' => $item->correct_answer,
+            'incorrect_answer' => explode("|", $item->incorrect_answer)]);
+        }
 
-        $NumberGroupName=1;
-        // $getQuizGroup = FlashCardModel::getQuizGroup($email);
+        return response()->json($array_question);
 
-        $getQuestion = FlashCardModel::getData($NumberGroupName);
 
-        return response()->json($getQuestion);
+
+
+
+
 
         // if ($email === null) {
         //     return response()->json(
