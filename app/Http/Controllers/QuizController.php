@@ -9,7 +9,7 @@ use App\Models\QuizModel;
 
 class QuizController extends Controller
 {
-    public function getQuizGroup()
+    public function getQuizGroupName()
     {
         $get = QuizModel::getQuizGroupName();
 
