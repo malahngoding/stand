@@ -14,14 +14,17 @@ class FlashCardModel extends Model
 
         $user = DB::table('questions')->where('questions.id', $NumberGroupName)
             ->join('quiz_question', 'questions.id', '=', 'quiz_question.quizgroup_id')
-            ->select('questions.groupname','quiz_question.quizgroup_id','quiz_question.picture','quiz_question.score','quiz_question.question','quiz_question.correct_answer','quiz_question.incorrect_answer')
+            ->select('questions.groupname', 'quiz_question.quizgroup_id', 'quiz_question.picture', 'quiz_question.score', 'quiz_question.question', 'quiz_question.correct_answer', 'quiz_question.incorrect_answer')
             ->get();
 
         return $user;
     }
-    public static function getQuizGroupName()
+    public static function getQuizGroupName($email)
     {
-        $get = DB::table('quiz_question_group')
+        $get = DB::table('questions_flow')
+            ->where('questions_flow.email', $email)
+            ->join('questions', 'questions_flow.QuizGroup', '=', 'questions.id')
+            ->select('questions.groupname', 'questions_flow.email', 'questions_flow.noQuiz', 'questions_flow.QuizGroup')
             ->get();
 
         return $get;

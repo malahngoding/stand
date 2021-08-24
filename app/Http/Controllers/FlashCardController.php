@@ -11,11 +11,9 @@ class FlashCardController extends Controller
 {
     public function getQuizGroupName(Request $request)
     {
-        $email = $request->email;
-        $get = FlashCardModel::getQuizGroupName()
-            ->where('email', $email);
+        $get = FlashCardModel::getQuizGroupName($request->email);
 
-        return response()->json([$email]);
+        return response()->json($get);
     }
 
     public function get(Request $request)
@@ -23,7 +21,7 @@ class FlashCardController extends Controller
         // $email = $request->email;
         // $cek = DB::table('users')->where('email', $request->email)->first();
 
-        $NumberGroupName=1;
+        $NumberGroupName = 1;
         // $getQuizGroup = FlashCardModel::getQuizGroup($email);
 
         $getQuestion = FlashCardModel::getData($NumberGroupName);
