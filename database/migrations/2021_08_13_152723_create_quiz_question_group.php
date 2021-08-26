@@ -18,7 +18,7 @@ class CreateQuizQuestionGroup extends Migration
             $table->string('groupname');
             $table->string('questionscount');
             $table->timestamps();
-            $table->string('isActive')->default('FALSE');
+            $table->string('isDelete')->default('FALSE');
         });
     }
 

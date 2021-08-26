@@ -23,12 +23,25 @@ class FlashCardModel extends Model
     {
         $get = DB::table('questions_flow')
             ->where('questions_flow.email', $email)
-            ->join('questions', 'questions_flow.QuizGroup', '=', 'questions.id')
-            ->select('questions.groupname', 'questions_flow.email', 'questions_flow.noQuiz', 'questions_flow.QuizGroup')
+            ->join('quiz_question_group', 'questions_flow.QuizGroup', '=', 'quiz_question_group.id')
+            ->select('quiz_question_group.groupname', 'questions_flow.email', 'questions_flow.noQuiz', 'questions_flow.QuizGroup')
             ->get();
 
         return $get;
     }
+
+    public static function getQuizGroupNameNullEmail($email)
+    {
+        $get = DB::table('questions_flow')
+            ->insert([
+                'email' => $email,
+                'QuizGroup' => 1,
+                'noQuiz' => 1
+            ]);
+
+        return $get;
+    }
+
     // public static function getQuizGroup($email)
     // {
 
