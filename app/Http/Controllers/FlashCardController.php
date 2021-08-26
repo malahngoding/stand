@@ -4,15 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class FlashCardController extends Controller
 {
 
+    public function getQuizGroupName(Request $request)
+    {
+        $email = $request->email;
+        $get = FlashCardModel::getQuizGroupName()
+            ->where('email', $email);
+
+        return response()->json([$email]);
+    }
+
+
     public function get(Request $request)
     {
         $array_question = [];
-        // $id=1;
         $id=$request->id;
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
@@ -25,6 +34,5 @@ class FlashCardController extends Controller
         }
 
         return response()->json($array_question);
-
     }
 }
