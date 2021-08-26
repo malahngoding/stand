@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class FlashCardController extends Controller
 {
@@ -33,8 +32,8 @@ class FlashCardController extends Controller
     public function get(Request $request)
     {
         $array_question = [];
-        // $id=1;
-        $id = $request->id;
+
+        $id=$request->id;
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
             array_push($array_question, [
