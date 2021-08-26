@@ -26,45 +26,5 @@ class FlashCardController extends Controller
 
         return response()->json($array_question);
 
-
-
-
-
-
-
-        // if ($email === null) {
-        //     return response()->json(
-        //         [
-        //             "message" => ["Silakan masukkan email"],
-        //             "success" => false,
-
-        //         ],
-        //     );
-        // }
-        // if (filter_var($email, FILTER_VALIDATE_EMAIL) && $cek !== null) {
-        //     return response()->json(
-        //         [
-        //             "message" => ["Data Berhasil didapatkan"],
-        //             "success" => true,
-        //             "profile" => $getQuestion,
-
-        //         ]
-        //     );
-        // } elseif ($cek === null && $email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //     return response()->json(
-        //         [
-        //             "message" => ["Email tidak terdaftar"],
-        //             "success" => false,
-
-        //         ],
-        //     );
-        // } else {
-        //     return response()->json(
-        //         [
-        //             "message" => ["Maaf email yang kamu tidak lolos validasi"],
-        //             "success" => false,
-        //         ],
-        //     );
-        // }
     }
 }
