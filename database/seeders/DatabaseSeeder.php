@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             QuizQuestionGroupSeeder::class,
             PHP2QuestionSeeder::class,
             HTML1QuestionSeeder::class,
-            HTML2QuestionSeeder::class
+            HTML2QuestionSeeder::class,
+            PemrogramanDasar1QuestionSeeder::class,
+            PemrogramanDasar2QuestionSeeder::class
         ]);
     }
 }
