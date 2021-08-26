@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizQuestionGroup extends Migration
+class CreateQuizResult extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateQuizQuestionGroup extends Migration
      */
     public function up()
     {
-        Schema::create('quiz_question_group', function (Blueprint $table) {
+        Schema::create('quiz_result', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('groupname');
-            $table->string('questionscount');
+            $table->string('email');
+            $table->string('nilai');
+            $table->string('jawaban_benar');
+            $table->string('rata_rata');
+            $table->string('akurasi');
+            $table->string('soal_dilewati');
             $table->timestamps();
-            $table->string('isDelete')->default('FALSE');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateQuizQuestionGroup extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quiz_question_group');
+        Schema::dropIfExists('quiz_result');
     }
 }
