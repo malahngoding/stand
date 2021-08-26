@@ -14,7 +14,19 @@ class FlashCardController extends Controller
     {
         $get = FlashCardModel::getQuizGroupName($request->email);
 
-        return response()->json($get);
+        if (count($get) === 0) {
+            DB::table('questions_flow')
+                ->insert([
+                    'email' => $request->email,
+                    'QuizGroup' => 1,
+                    'noQuiz' => 1
+                ]);
+
+            $null_email = FlashCardModel::getQuizGroupName($request->email);
+            return response()->json($null_email);
+        } else {
+            return response()->json($get);
+        }
     }
 
 
@@ -22,15 +34,17 @@ class FlashCardController extends Controller
     {
         $array_question = [];
         // $id=1;
-        $id=$request->id;
+        $id = $request->id;
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
-            array_push($array_question,['groupname' => $item->groupname,
-            'quizgroup_id' => $item->quizgroup_id, 'picture' => $item->picture,
-            'score' => $item->score,
-            'question' => $item->question,
-            'correct_answer' => $item->correct_answer,
-            'incorrect_answer' => explode("|", $item->incorrect_answer)]);
+            array_push($array_question, [
+                'groupname' => $item->groupname,
+                'quizgroup_id' => $item->quizgroup_id, 'picture' => $item->picture,
+                'score' => $item->score,
+                'question' => $item->question,
+                'correct_answer' => $item->correct_answer,
+                'incorrect_answer' => explode("|", $item->incorrect_answer)
+            ]);
         }
 
         return response()->json($array_question);

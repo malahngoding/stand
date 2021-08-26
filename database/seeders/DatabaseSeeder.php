@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             QuestionSeeder::class,
-            QuizQuestionGroupSeeder::class
-
+            QuizQuestionGroupSeeder::class,
+            PHP2QuestionSeeder::class,
+            HTML1QuestionSeeder::class,
+            HTML2QuestionSeeder::class
         ]);
     }
 }
