@@ -28,6 +28,12 @@ class FlashCardController extends Controller
         }
     }
 
+    public function getQuizResult(Request $request)
+    {
+        $get = FlashCardModel::getQuizResult($request->email);
+        return response()->json($get);
+    }
+
 
     public function get(Request $request)
     {
