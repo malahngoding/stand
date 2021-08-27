@@ -26,16 +26,17 @@ class QuestionSeeder extends Seeder
         $faker_answer4 = implode("|", $array_answer4);
         $array_answer5 = array('James Gosling', 'Brendan Eich', 'Guido van Rossum', 'Mark Zuckerberg');
         $faker_answer5 = implode("|", $array_answer5);
-        $array_answer6 = array('E-book digital', 'E-goverment', 'E-mail', 'E-wallet');
-        $faker_answer6 = implode("|", $array_answer6);
-        $array_answer7 = array('Network Places', 'My Document', 'My Computer', 'Internet Explorer');
-        $faker_answer7 = implode("|", $array_answer7);
-        $array_answer8 = array('WAN', 'MAN', 'PAN', 'CAN');
-        $faker_answer8 = implode("|", $array_answer8);
-        $array_answer9 = array('Ctrl + O', 'Ctrl + P', 'Ctrl + A', 'Ctrl + U');
-        $faker_answer9 = implode("|", $array_answer9);
-        $array_answer10 = array('Teknologi Industri dan Komunikasi', 'Teknologi Interface dan Komputer', 'Teknologi Input dan Komputer', 'Semua jawaban salah');
-        $faker_answer10 = implode("|", $array_answer10);
+        $array_answer6 = array('E-book digital', 'E-commerce', 'E-goverment', 'E-mail', 'E-wallet');
+        $answer6 = implode("|", $array_answer6);
+        $array_answer7 = array('Recycle Bin', 'Network Places', 'My Document', 'My Computer', 'Internet Explorer');
+        $answer7 = implode("|", $array_answer7);
+        $array_answer8 = array('LAN', 'WAN', 'MAN', 'PAN', 'CAN');
+        $answer8 = implode("|", $array_answer8);
+        $array_answer9 = array('Ctrl + O', 'Ctrl + P', 'Ctrl + C', 'Ctrl + A', 'Ctrl + U');
+        $answer9 = implode("|", $array_answer9);
+        $array_answer10 = array('Teknologi Informasi dan Komunikasi', 'Teknologi Industri dan Komunikasi', 'Teknologi Interface dan Komputer', 'Teknologi Input dan Komputer', 'Semua jawaban salah');
+        $answer10 = implode("|", $array_answer10);
+
         $id = DB::table('questions')->insertGetId(
             [
                 'groupname' => 'PHP 1',
@@ -92,13 +93,13 @@ class QuestionSeeder extends Seeder
 
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 2,
+                'quizgroup_id' => 3,
                 'no_quiz' => 1,
-                'score' => 100,
+                'score' => 20,
                 'question' => "Peranan komputer dalam bidang dunia usaha adalah membuka peluang bisnis baru dan mengembangkan perdagangan melalui…
                 ",
-                'incorrect_answer' => $faker_answer6,
-                'correct_answer' => 'E-commerce',
+                'incorrect_answer' => $answer6,
+                'correct_answer' => 1,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -106,13 +107,13 @@ class QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 2,
+                'quizgroup_id' => 3,
                 'no_quiz' => 2,
-                'score' => 100,
+                'score' => 20,
                 'question' => "Guna menghapus file dapat dilakukan dengan cara klik nama file kemudian klik ikon Delete, dan secara otomatis file akan masuk ke dalam folder…
                 ",
-                'incorrect_answer' => $faker_answer7,
-                'correct_answer' => 'Recycle Bin',
+                'incorrect_answer' => $answer7,
+                'correct_answer' => 0,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -120,12 +121,12 @@ class QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 2,
+                'quizgroup_id' => 3,
                 'no_quiz' => 3,
-                'score' => 100,
+                'score' => 20,
                 'question' => "Suatu jaringan komputer yang menghubungkan suatu komputer dengan komputer lain dengan jarak yang terbatas disebut dengan?",
-                'incorrect_answer' => $faker_answer8,
-                'correct_answer' => 'LAN',
+                'incorrect_answer' => $answer8,
+                'correct_answer' => 0,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -133,12 +134,12 @@ class QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 2,
+                'quizgroup_id' => 3,
                 'no_quiz' => 4,
-                'score' => 100,
+                'score' => 20,
                 'question' => "Perintah copy atau salin dapat dilakukan dengan kombinasi tombol pada keyboard dengan menekan...",
-                'incorrect_answer' => $faker_answer9,
-                'correct_answer' => 'Ctrl + C',
+                'incorrect_answer' => $answer9,
+                'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -146,21 +147,13 @@ class QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 2,
+                'quizgroup_id' => 3,
                 'no_quiz' => 5,
-                'score' => 100,
+                'score' => 20,
                 'question' => "TIK adalah singkatan dari...",
-                'incorrect_answer' => $faker_answer10,
-                'correct_answer' =>'Teknologi Informasi dan Komunikasi',
+                'incorrect_answer' => $answer10,
+                'correct_answer' => 0,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('questions')->insert(
-            [
-                'groupname' => 'Internet Of Things',
-                'questionscount' => $faker->numberBetween(1,),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
