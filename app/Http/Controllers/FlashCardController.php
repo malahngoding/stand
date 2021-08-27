@@ -17,6 +17,12 @@ class FlashCardController extends Controller
         return response()->json($get);
     }
 
+    public function getQuizResult(Request $request)
+    {
+        $get = FlashCardModel::getQuizResult($request->email);
+        return response()->json($get);
+    }
+
 
     public function get(Request $request)
     {

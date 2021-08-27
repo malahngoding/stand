@@ -29,6 +29,28 @@ class FlashCardModel extends Model
 
         return $get;
     }
+
+    public static function getQuizGroupNameNullEmail($email)
+    {
+        $get = DB::table('questions_flow')
+            ->insert([
+                'email' => $email,
+                'QuizGroup' => 1,
+                'noQuiz' => 1
+            ]);
+
+        return $get;
+    }
+
+    public static function getQuizResult($email)
+    {
+        $get = DB::table('quiz_result')
+            ->where('email', $email)
+            ->get();
+
+        return $get;
+    }
+
     // public static function getQuizGroup($email)
     // {
 
