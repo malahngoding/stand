@@ -42,6 +42,13 @@ class FlashCardModel extends Model
         return $get;
     }
 
+    public static function getDataTotalScore($email)
+    {
+
+        $user = DB::table('users')->where('email', $email)->first();
+
+        return $user;
+    }
     // public static function getQuizGroup($email)
     // {
 

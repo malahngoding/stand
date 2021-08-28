@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class FlashCardController extends Controller
 {
@@ -47,5 +47,13 @@ class FlashCardController extends Controller
         }
 
         return response()->json($array_question);
+    }
+    public function getTotalScore(Request $request)
+    {
+
+        $email=$request->email;
+        $getTotalScore = FlashCardModel::getDataTotalScore($email);
+
+        return response()->json($getTotalScore);
     }
 }
