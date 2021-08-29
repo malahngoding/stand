@@ -28,12 +28,18 @@ class FlashCardController extends Controller
         }
     }
 
+    public function getQuizResult(Request $request)
+    {
+        $get = FlashCardModel::getQuizResult($request->email);
+        return response()->json($get);
+    }
+
 
     public function get(Request $request)
     {
         $array_question = [];
 
-        $id=$request->id;
+        $id = $request->id;
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
             array_push($array_question, [
