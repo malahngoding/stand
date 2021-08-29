@@ -12,6 +12,7 @@ class FlashCardController extends Controller
     public function getQuizGroupName(Request $request)
     {
         $get = FlashCardModel::getQuizGroupName($request->email);
+        $insert = FlashCardModel::insertEmail($request->email);
 
         if (count($get) === 0) {
             DB::table('questions_flow')
