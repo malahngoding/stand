@@ -56,4 +56,17 @@ class FlashCardController extends Controller
 
         return response()->json($getTotalScore);
     }
+    public function postResult(Request $request)
+    {
+
+        $email=$request->email;
+        $jawaban_benar=$request->jawaban_benar;
+        $akurasi=$request->akurasi;
+        $rata_rata=$request->rata_rata;
+        $nilai=$request->nilai;
+        $TotalScore=$request->TotalScore;
+        $postResultData = FlashCardModel::postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore);
+
+        return response($postResultData);
+    }
 }
