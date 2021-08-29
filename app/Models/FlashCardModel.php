@@ -41,6 +41,18 @@ class FlashCardModel extends Model
 
         return $get;
     }
+    public static function insertEmail($email)
+    {
+        $get = DB::table('users')
+            ->insert([
+                'email' => $email,
+            ]);
+        $get2 = DB::table('quiz_result')
+            ->insert([
+                'email' => $email,
+            ]);
+        return $get;
+    }
 
     public static function getQuizResult($email)
     {
