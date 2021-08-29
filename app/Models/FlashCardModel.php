@@ -62,14 +62,14 @@ class FlashCardModel extends Model
 
         return $user;
     }
-    public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$skip)
+    public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati)
     {
         DB::table('quiz_result')->where('email',$email)->update([
             'nilai' => $nilai,
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,
             'rata_rata' => $rata_rata,
-            'skip'  =>  $skip
+            'soal_dilewati'  =>  $soal_dilewati
         ]);
         DB::table('users')->where('email',$email)->update([
             'TotalScore' => $TotalScore,
