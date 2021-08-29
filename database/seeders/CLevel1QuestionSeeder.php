@@ -14,38 +14,47 @@ class CLevel1QuestionSeeder extends Seeder
      */
     public function run()
     {
-        $array_answer1 = array('String', 'Flowchart', 'Bloolean', 'Real');
+        $array_answer1 = array('cout<<“Hello World”;', 'print<<“Hello World”;', 'echo “Hello World”;', 'System.out.print(“Hello World”);');
         $answer1 = implode("|", $array_answer1);
-        $array_answer2 = array('Bill Gates', 'Prof. Nikluas Smirth', 'Kondrazuse', 'DR. Hercules');
+        $array_answer2 = array('/* Ini komentar', '# Ini komentar', '// Ini komentar', '< Ini komentar >');
         $answer2 = implode("|", $array_answer2);
-        $array_answer3 = array('Operator relasi', 'Operator logika', 'Operator pembandingan', 'Operator aritmatika');
+        $array_answer3 = array(':', ';', ']', '}');
         $answer3 = implode("|", $array_answer3);
-        $array_answer4 = array('Pascal', 'PHP', 'Phyton', 'Java');
+        $array_answer4 = array('cout', 'cin', 'getch', 'input');
         $answer4 = implode("|", $array_answer4);
-        $array_answer5 = array('Kombinasi antara dua nilai', 'Penjumlahan antara dua nilai', 'Perbandingan antara dua nilai', 'Kombinasi antara hubungan');
+        $array_answer5 = array('konstanta', 'variabel', 'define', 'function');
         $answer5 = implode("|", $array_answer5);
-        $array_answer6 = array('For', 'Do While', 'Switch', 'Semua benar');
+        $array_answer6 = array('string', 'String', 'txt', 'TXT');
         $answer6 = implode("|", $array_answer6);
-        $array_answer7 = array('Intergration', 'Sequence', 'Looping', 'Selection');
+        $array_answer7 = array('bilangan int;', 'var bilangan;', 'int bilangan;', '$bilangan;');
         $answer7 = implode("|", $array_answer7);
-        $array_answer8 = array('When...do', 'When...go', 'Go...to', 'Until...if');
+        $array_answer8 = array('Char', 'String', 'Integer', 'Double');
         $answer8 = implode("|", $array_answer8);
-        $array_answer9 = array('Array Single-Dimensi', 'Array Multi-Dimensi', 'Array Dimensi satu', 'Array Dimensi dua');
+        $array_answer9 = array('Char', 'String', 'Integer', 'Double');
         $answer9 = implode("|", $array_answer9);
-        $array_answer10 = array('2', '-1', '0', '9 / Tergantung angka didalam tanda[]');
+        $array_answer10 = array('integer', 'float', 'double', 'char / Tergantung angka didalam tanda[]');
         $answer10 = implode("|", $array_answer10);
-        $array_answer11 = array('Char', 'String', 'Int', 'Float');
-        $answer11 = implode("|", $array_answer11);
-        $array_answer12 = array('Real', 'Riil', 'Boolean', 'Integer');
-        $answer12 = implode("|", $array_answer12);
 
         DB::table('quiz_question')->insert(
             [
                 'quizgroup_id' => 8,
                 'no_quiz' => 1,
                 'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
+                'question' => "Berikut Sintak yang benar untuk menghasilkan output ‘Hello World’ di C++ ?",
                 'incorrect_answer' => $answer1,
+                'correct_answer' => 0,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 2,
+                'score' => 20,
+                'question' => "Bagaimana cara membuat komentar di C++ ?",
+                'incorrect_answer' => $answer2,
                 'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
@@ -55,10 +64,62 @@ class CLevel1QuestionSeeder extends Seeder
         DB::table('quiz_question')->insert(
             [
                 'quizgroup_id' => 8,
-                'no_quiz' => 1,
+                'no_quiz' => 3,
                 'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
+                'question' => "Setiap perintah di dalam C++ selalu diakhiri dengan tanda?",
+                'incorrect_answer' => $answer3,
+                'correct_answer' => 1,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 4,
+                'score' => 20,
+                'question' => "Perintah untuk menginput suatu nilai dari keyboard untuk di proses di dalam program adalah?",
+                'incorrect_answer' => $answer4,
+                'correct_answer' => 1,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 5,
+                'score' => 20,
+                'question' => "Suatu tempat yang berfungsi untuk menampung data atau nilai yang dapat berubah-ubah selama program berjalan disebut?",
+                'incorrect_answer' => $answer5,
+                'correct_answer' => 1,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 6,
+                'score' => 20,
+                'question' => "Tipe data apa yang digunakan untuk menyimpan variabel dengan nilai teks?",
+                'incorrect_answer' => $answer6,
+                'correct_answer' => 0,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 7,
+                'score' => 20,
+                'question' => "Dibawah ini adalah cara yang tepat untuk deklarasi variabel bilangan dengan tipe integer di C++ !",
+                'incorrect_answer' => $answer7,
                 'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
@@ -68,10 +129,23 @@ class CLevel1QuestionSeeder extends Seeder
         DB::table('quiz_question')->insert(
             [
                 'quizgroup_id' => 8,
-                'no_quiz' => 1,
+                'no_quiz' => 8,
                 'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
+                'question' => "Tipe data yang digunakan untuk bilangan pecahan adalah ?",
+                'incorrect_answer' => $answer8,
+                'correct_answer' => 3,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 9,
+                'score' => 20,
+                'question' => "Tipe data yang digunakan untuk bilangan bulat adalah ?",
+                'incorrect_answer' => $answer9,
                 'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
@@ -81,89 +155,11 @@ class CLevel1QuestionSeeder extends Seeder
         DB::table('quiz_question')->insert(
             [
                 'quizgroup_id' => 8,
-                'no_quiz' => 1,
+                'no_quiz' => 10,
                 'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 8,
-                'no_quiz' => 1,
-                'score' => 20,
-                'question' => "Tipe data bahasa pascal untuk True False adalah...",
-                'incorrect_answer' => $answer1,
-                'correct_answer' => 2,
+                'question' => "Di bawah ini merupakan tipe data numerik, kecuali...",
+                'incorrect_answer' => $answer10,
+                'correct_answer' => 3,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),

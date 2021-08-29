@@ -16,11 +16,11 @@ class CreateQuizResult extends Migration
         Schema::create('quiz_result', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('email');
-            $table->string('nilai');
-            $table->string('jawaban_benar');
-            $table->string('rata_rata');
-            $table->string('akurasi');
-            $table->string('skip');
+            $table->string('nilai')->default(0);
+            $table->string('jawaban_benar')->default(0);;
+            $table->string('rata_rata')->default(0);;
+            $table->string('akurasi')->default(0);;
+            $table->string('soal_dilewati')->default(0);
             $table->timestamps();
         });
     }
