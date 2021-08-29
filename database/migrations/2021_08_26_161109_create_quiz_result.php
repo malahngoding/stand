@@ -20,7 +20,7 @@ class CreateQuizResult extends Migration
             $table->string('jawaban_benar')->default(0);;
             $table->string('rata_rata')->default(0);;
             $table->string('akurasi')->default(0);;
-            $table->string('soal_dilewati')->default(0);;
+            $table->string('soal_dilewati')->default(0);
             $table->timestamps();
         });
     }
