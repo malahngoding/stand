@@ -21,7 +21,14 @@ class DatabaseSeeder extends Seeder
             HTML1QuestionSeeder::class,
             HTML2QuestionSeeder::class,
             PemrogramanDasar1QuestionSeeder::class,
+<<<<<<< Updated upstream
             PemrogramanDasar2QuestionSeeder::class
+=======
+            PemrogramanDasar2QuestionSeeder::class,
+            CLevel1QuestionSeeder::class,
+            CLevel2QuestionSeeder::class,
+            JavaLevel1QuestionSeeder::class
+>>>>>>> Stashed changes
         ]);
     }
 }
