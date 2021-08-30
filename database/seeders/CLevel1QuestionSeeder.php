@@ -5,9 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-
-
-class CLevel2QuestionSeeder extends Seeder
+class CLevel1QuestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,60 +14,34 @@ class CLevel2QuestionSeeder extends Seeder
      */
     public function run()
     {
-        $array_answer1 = array('Menampilkan output', 'Membersihkan layar', 'Menahan tampilan output', 'Menampilkan karakter tertentu');
+        $array_answer1 = array('cout<<“Hello World”;', 'print<<“Hello World”;', 'echo “Hello World”;', 'System.out.print(“Hello World”);');
         $answer1 = implode("|", $array_answer1);
-        $array_answer2 = array('void', 'return', 'get', 'break');
+        $array_answer2 = array('/* Ini komentar', '# Ini komentar', '// Ini komentar', '< Ini komentar >');
         $answer2 = implode("|", $array_answer2);
-        $array_answer3 = array('Fungsi menghasilkan nilai balik sementara prosedur tidak', 'Fungsi dapat di deklarasikan di dalam fungsi lain, sementara prosedur tidak', 'Fungsi dapat dipanggil di dalam fungsi main() sementara prosedur tidak', 'Fungsi mempunyai parameter sedangkan prosedur tidak');
+        $array_answer3 = array(':', ';', ']', '}');
         $answer3 = implode("|", $array_answer3);
-        $array_answer4 = array('namaFungsi[]', 'namaFungsi()', '(namaFungsi)', 'function namaFungsi');
+        $array_answer4 = array('cout', 'cin', 'getch', 'input');
         $answer4 = implode("|", $array_answer4);
-        $array_answer5 = array('int nilai{10};', 'int nilai[10];', 'int [] nilai = new int[10];', 'int nilai;');
+        $array_answer5 = array('konstanta', 'variabel', 'define', 'function');
         $answer5 = implode("|", $array_answer5);
-        $array_answer6 = array('{}', '||', '[]', '()');
+        $array_answer6 = array('string', 'String', 'txt', 'TXT');
         $answer6 = implode("|", $array_answer6);
-        $array_answer7 = array('#include < stream >', '#include < iostream >', '#include < conio.h>', '#include < iostring >');
+        $array_answer7 = array('bilangan int;', 'var bilangan;', 'int bilangan;', '$bilangan;');
         $answer7 = implode("|", $array_answer7);
-        $array_answer8 = array('getZise()', 'length()', 'len()', 'getLen()');
+        $array_answer8 = array('Char', 'String', 'Integer', 'Double');
         $answer8 = implode("|", $array_answer8);
-        $array_answer9 = array('break()', 'close()', 'exit()', 'goto()');
+        $array_answer9 = array('Char', 'String', 'Integer', 'Double');
         $answer9 = implode("|", $array_answer9);
-        $array_answer10 = array('if', 'if else', 'switch', 'for');
+        $array_answer10 = array('integer', 'float', 'double', 'char / Tergantung angka didalam tanda[]');
         $answer10 = implode("|", $array_answer10);
 
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 1,
                 'score' => 20,
-                'question' => "Fungsi dari perintah Clrscr adalah?",
+                'question' => "Berikut Sintak yang benar untuk menghasilkan output ‘Hello World’ di C++ ?",
                 'incorrect_answer' => $answer1,
-                'correct_answer' => 1,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 9,
-                'no_quiz' => 2,
-                'score' => 20,
-                'question' => "Kata kunci yang digunakan untuk menyatakan nilai balik di dalam fungsi?",
-                'incorrect_answer' => $answer2,
-                'correct_answer' => 1,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 9,
-                'no_quiz' => 3,
-                'score' => 20,
-                'question' => "Di bawah ini adalah perbedaan fungsi dan prosedur",
-                'incorrect_answer' => $answer3,
                 'correct_answer' => 0,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
@@ -78,10 +50,36 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
+                'no_quiz' => 2,
+                'score' => 20,
+                'question' => "Bagaimana cara membuat komentar di C++ ?",
+                'incorrect_answer' => $answer2,
+                'correct_answer' => 2,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 3,
+                'score' => 20,
+                'question' => "Setiap perintah di dalam C++ selalu diakhiri dengan tanda?",
+                'incorrect_answer' => $answer3,
+                'correct_answer' => 1,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
                 'no_quiz' => 4,
                 'score' => 20,
-                'question' => "Bagaimana cara membuat fungsi di C++?",
+                'question' => "Perintah untuk menginput suatu nilai dari keyboard untuk di proses di dalam program adalah?",
                 'incorrect_answer' => $answer4,
                 'correct_answer' => 1,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
@@ -91,10 +89,10 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 5,
                 'score' => 20,
-                'question' => "Berikut adalah cara yang benar untuk mendeklarasikan array di C++ !",
+                'question' => "Suatu tempat yang berfungsi untuk menampung data atau nilai yang dapat berubah-ubah selama program berjalan disebut?",
                 'incorrect_answer' => $answer5,
                 'correct_answer' => 1,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
@@ -104,11 +102,24 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 6,
                 'score' => 20,
-                'question' => "Untuk mendeklarasikan array di C++ di tandai dengan tanda?",
+                'question' => "Tipe data apa yang digunakan untuk menyimpan variabel dengan nilai teks?",
                 'incorrect_answer' => $answer6,
+                'correct_answer' => 0,
+                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('quiz_question')->insert(
+            [
+                'quizgroup_id' => 8,
+                'no_quiz' => 7,
+                'score' => 20,
+                'question' => "Dibawah ini adalah cara yang tepat untuk deklarasi variabel bilangan dengan tipe integer di C++ !",
+                'incorrect_answer' => $answer7,
                 'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
@@ -117,25 +128,12 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
-                'no_quiz' => 7,
-                'score' => 20,
-                'question' => "Berikut adalah file header yang berfungsi untuk menangani input/output di C++?   ",
-                'incorrect_answer' => $answer7,
-                'correct_answer' => 1,
-                'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        DB::table('quiz_question')->insert(
-            [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 8,
                 'score' => 20,
-                'question' => "Method atau fungsi yang digunakan untuk mendapatkan panjang string adalah ?",
+                'question' => "Tipe data yang digunakan untuk bilangan pecahan adalah ?",
                 'incorrect_answer' => $answer8,
-                'correct_answer' => 1,
+                'correct_answer' => 3,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -143,10 +141,10 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 9,
                 'score' => 20,
-                'question' => "Fungsi yang dapat menghentikan program (secara normal) menggunakan fungsi?",
+                'question' => "Tipe data yang digunakan untuk bilangan bulat adalah ?",
                 'incorrect_answer' => $answer9,
                 'correct_answer' => 2,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
@@ -156,10 +154,10 @@ class CLevel2QuestionSeeder extends Seeder
         );
         DB::table('quiz_question')->insert(
             [
-                'quizgroup_id' => 9,
+                'quizgroup_id' => 8,
                 'no_quiz' => 10,
                 'score' => 20,
-                'question' => "Berikut adalah struktur percabangan atau pemilihan di C++, Kecuali...",
+                'question' => "Di bawah ini merupakan tipe data numerik, kecuali...",
                 'incorrect_answer' => $answer10,
                 'correct_answer' => 3,
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
@@ -167,6 +165,5 @@ class CLevel2QuestionSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
-
     }
 }

@@ -81,8 +81,7 @@ class QuizQuestionGroupSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
-<<<<<<< Updated upstream
-=======
+
         $id = DB::table('quiz_question_group')->insertGetId(
             [
                 'groupname' => 'C++ Level 2',
@@ -99,6 +98,6 @@ class QuizQuestionGroupSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
->>>>>>> Stashed changes
+
     }
 }

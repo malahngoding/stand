@@ -41,6 +41,51 @@ class FlashCardModel extends Model
 
         return $get;
     }
+    public static function insertEmail($email)
+    {
+        $get = DB::table('users')
+            ->insert([
+                'email' => $email,
+            ]);
+        $get2 = DB::table('quiz_result')
+            ->insert([
+                'email' => $email,
+            ]);
+        return $get;
+    }
+
+
+    public static function getDataTotalScore($email)
+    {
+
+        $user = DB::table('users')->where('email', $email)->first();
+
+        return $user;
+    }
+    public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati)
+    {
+        DB::table('quiz_result')->where('email',$email)->update([
+            'nilai' => $nilai,
+            'jawaban_benar' => $jawaban_benar,
+            'akurasi' => $akurasi,
+            'rata_rata' => $rata_rata,
+            'soal_dilewati'  =>  $soal_dilewati
+        ]);
+        DB::table('users')->where('email',$email)->update([
+            'TotalScore' => $TotalScore,
+        ]);
+    }
+
+    public static function getQuizResult($email)
+    {
+        $get = DB::table('quiz_result')
+            ->where('email', $email)
+            ->get();
+
+        return $get;
+    }
+
+
 
     // public static function getQuizGroup($email)
     // {
