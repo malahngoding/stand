@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             PemrogramanDasar2QuestionSeeder::class,
             CLevel1QuestionSeeder::class,
             CLevel2QuestionSeeder::class,
+            JavaLevel1QuestionSeeder::class
         ]);
     }
 }

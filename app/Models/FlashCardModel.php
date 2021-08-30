@@ -12,9 +12,9 @@ class FlashCardModel extends Model
     public static function getData($id)
     {
 
-        $user = DB::table('questions')->where('questions.id', $id)
-            ->join('quiz_question', 'questions.id', '=', 'quiz_question.quizgroup_id')
-            ->select('questions.groupname', 'quiz_question.quizgroup_id', 'quiz_question.picture', 'quiz_question.score', 'quiz_question.question', 'quiz_question.correct_answer', 'quiz_question.incorrect_answer')
+        $user = DB::table('quiz_question_group')->where('quiz_question_group.id', $id)
+            ->join('quiz_question', 'quiz_question_group.id', '=', 'quiz_question.quizgroup_id')
+            ->select('quiz_question_group.groupname', 'quiz_question.quizgroup_id', 'quiz_question.picture', 'quiz_question.score', 'quiz_question.question', 'quiz_question.correct_answer', 'quiz_question.incorrect_answer')
             ->get();
 
         return $user;
@@ -54,9 +54,6 @@ class FlashCardModel extends Model
         return $get;
     }
 
-<<<<<<< Updated upstream
-=======
-
     public static function getDataTotalScore($email)
     {
 
@@ -64,21 +61,22 @@ class FlashCardModel extends Model
 
         return $user;
     }
-    public static function postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $TotalScore, $soal_dilewati)
+
+    public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati)
     {
-        DB::table('quiz_result')->where('email', $email)->update([
+        DB::table('quiz_result')->where('email',$email)->update([
             'nilai' => $nilai,
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,
             'rata_rata' => $rata_rata,
             'soal_dilewati'  =>  $soal_dilewati
         ]);
-        DB::table('users')->where('email', $email)->update([
+
+        DB::table('users')->where('email',$email)->update([
             'TotalScore' => $TotalScore,
         ]);
     }
 
->>>>>>> Stashed changes
     public static function getQuizResult($email)
     {
         $get = DB::table('quiz_result')
@@ -87,6 +85,7 @@ class FlashCardModel extends Model
 
         return $get;
     }
+
 
 
     // public static function getQuizGroup($email)

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class FlashCardController extends Controller
 {
@@ -40,7 +40,7 @@ class FlashCardController extends Controller
     {
         $array_question = [];
 
-        $id=$request->id;
+        $id = $request->id;
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
             array_push($array_question, [
@@ -55,8 +55,7 @@ class FlashCardController extends Controller
 
         return response()->json($array_question);
     }
-<<<<<<< Updated upstream
-=======
+
     public function getTotalScore(Request $request)
     {
 
@@ -68,16 +67,15 @@ class FlashCardController extends Controller
     public function postResult(Request $request)
     {
 
-        $email = $request->email;
-        $jawaban_benar = $request->jawaban_benar;
-        $akurasi = $request->akurasi;
-        $rata_rata = $request->rata_rata;
-        $nilai = $request->nilai;
-        $TotalScore = $request->TotalScore;
-        $soal_dilewati = $request->soal_dilewati;
-        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $TotalScore, $soal_dilewati);
+        $email=$request->email;
+        $jawaban_benar=$request->jawaban_benar;
+        $akurasi=$request->akurasi;
+        $rata_rata=$request->rata_rata;
+        $nilai=$request->nilai;
+        $TotalScore=$request->TotalScore;
+        $soal_dilewati=$request->soal_dilewati;
+        $postResultData = FlashCardModel::postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati);
 
         return response($postResultData);
     }
->>>>>>> Stashed changes
 }
