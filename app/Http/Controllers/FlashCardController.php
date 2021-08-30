@@ -12,7 +12,7 @@ class FlashCardController extends Controller
     public function getQuizGroupName(Request $request)
     {
         $get = FlashCardModel::getQuizGroupName($request->email);
-        $insert = FlashCardModel::insertEmail($request->email);
+        // $insert = FlashCardModel::insertEmail($request->email);
 
         if (count($get) === 0) {
             DB::table('questions_flow')
@@ -21,7 +21,7 @@ class FlashCardController extends Controller
                     'QuizGroup' => 1,
                     'noQuiz' => 1
                 ]);
-
+            $insert = FlashCardModel::insertEmail($request->email);
             $null_email = FlashCardModel::getQuizGroupName($request->email);
             return response()->json($null_email);
         } else {
@@ -55,10 +55,11 @@ class FlashCardController extends Controller
 
         return response()->json($array_question);
     }
+
     public function getTotalScore(Request $request)
     {
 
-        $email=$request->email;
+        $email = $request->email;
         $getTotalScore = FlashCardModel::getDataTotalScore($email);
 
         return response()->json($getTotalScore);
