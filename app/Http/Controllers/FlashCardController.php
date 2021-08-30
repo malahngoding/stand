@@ -12,7 +12,7 @@ class FlashCardController extends Controller
     public function getQuizGroupName(Request $request)
     {
         $get = FlashCardModel::getQuizGroupName($request->email);
-        $insert = FlashCardModel::insertEmail($request->email);
+        // $insert = FlashCardModel::insertEmail($request->email);
 
         if (count($get) === 0) {
             DB::table('questions_flow')
@@ -21,7 +21,7 @@ class FlashCardController extends Controller
                     'QuizGroup' => 1,
                     'noQuiz' => 1
                 ]);
-
+            $insert = FlashCardModel::insertEmail($request->email);
             $null_email = FlashCardModel::getQuizGroupName($request->email);
             return response()->json($null_email);
         } else {
@@ -55,4 +55,29 @@ class FlashCardController extends Controller
 
         return response()->json($array_question);
     }
+<<<<<<< Updated upstream
+=======
+    public function getTotalScore(Request $request)
+    {
+
+        $email = $request->email;
+        $getTotalScore = FlashCardModel::getDataTotalScore($email);
+
+        return response()->json($getTotalScore);
+    }
+    public function postResult(Request $request)
+    {
+
+        $email = $request->email;
+        $jawaban_benar = $request->jawaban_benar;
+        $akurasi = $request->akurasi;
+        $rata_rata = $request->rata_rata;
+        $nilai = $request->nilai;
+        $TotalScore = $request->TotalScore;
+        $soal_dilewati = $request->soal_dilewati;
+        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $TotalScore, $soal_dilewati);
+
+        return response($postResultData);
+    }
+>>>>>>> Stashed changes
 }
