@@ -81,6 +81,7 @@ class QuizQuestionGroupSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
+
         $id = DB::table('quiz_question_group')->insertGetId(
             [
                 'groupname' => 'C++ Level 2',
@@ -89,5 +90,14 @@ class QuizQuestionGroupSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
+        $id = DB::table('quiz_question_group')->insertGetId(
+            [
+                'groupname' => 'Java Level 1',
+                'questionscount' => $faker->numberBetween(1,),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+
     }
 }
