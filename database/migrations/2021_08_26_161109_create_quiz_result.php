@@ -21,6 +21,7 @@ class CreateQuizResult extends Migration
             $table->string('rata_rata')->default(0);;
             $table->string('akurasi')->default(0);;
             $table->string('soal_dilewati')->default(0);
+            $table->string('totalscore')->default('0');
             $table->timestamps();
         });
     }

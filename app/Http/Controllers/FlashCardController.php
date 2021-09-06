@@ -9,21 +9,38 @@ use Illuminate\Support\Facades\DB;
 class FlashCardController extends Controller
 {
 
+    public function updateQuizGroup(Request $request)
+    {
+        DB::table('questions_flow')
+            ->where('email', $request->email)
+            ->update([
+                'QuizGroup' => $request->QuizGroup
+            ]);
+    }
     public function getQuizGroupName(Request $request)
     {
         $get = FlashCardModel::getQuizGroupName($request->email);
-        // $insert = FlashCardModel::insertEmail($request->email);
+        $insert = FlashCardModel::checkEmailOnUsersAndQuizResult($request->email);
+        $joss = DB::table('quiz_question_group')
+            ->get();
 
+        if (count($insert) === 0) {
+            FlashCardModel::insertEmail($request->email);
+        }
         if (count($get) === 0) {
-            DB::table('questions_flow')
+            $cek = DB::table('questions_flow')
                 ->insert([
                     'email' => $request->email,
-                    'QuizGroup' => 1,
-                    'noQuiz' => 1
                 ]);
-            $insert = FlashCardModel::insertEmail($request->email);
-            $null_email = FlashCardModel::getQuizGroupName($request->email);
-            return response()->json($null_email);
+            // $jos = DB::table('quiz_question_group')
+            //     ->where('id', 1)
+            //     ->get();
+            $mantap = FlashCardModel::getQuizGroupName($request->email);
+            if ($cek[0]->QuizGroup < count($joss)) {
+                return response()->json($mantap);
+            }
+            // $data = [$joss, $jos];
+            // return response()->json($mantap[0]->noQuiz);
         } else {
             return response()->json($get);
         }
@@ -66,7 +83,6 @@ class FlashCardController extends Controller
     }
     public function postResult(Request $request)
     {
-
         $email=$request->email;
         $jawaban_benar=$request->jawaban_benar;
         $akurasi=$request->akurasi;

@@ -30,25 +30,24 @@ class FlashCardModel extends Model
         return $get;
     }
 
-    public static function getQuizGroupNameNullEmail($email)
+    public static function checkEmailOnUsersAndQuizResult($email)
     {
-        $get = DB::table('questions_flow')
-            ->insert([
-                'email' => $email,
-                'QuizGroup' => 1,
-                'noQuiz' => 1
-            ]);
-
+        $get = DB::table('users')
+            ->where('email', $email)
+            ->get();
+        $get2 = DB::table('quiz_result')
+            ->where('email', $email)
+            ->get();
         return $get;
     }
     public static function insertEmail($email)
     {
         $get = DB::table('users')
-            ->insert([
+            ->updateOrInsert([
                 'email' => $email,
             ]);
         $get2 = DB::table('quiz_result')
-            ->insert([
+            ->updateOrInsert([
                 'email' => $email,
             ]);
         return $get;
@@ -65,7 +64,7 @@ class FlashCardModel extends Model
     public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati,$QuizGroup)
 
     {
-        DB::table('quiz_result')->where('email',$email)->update([
+        DB::table('quiz_result')->where('email', $email)->update([
             'nilai' => $nilai,
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,
@@ -73,7 +72,7 @@ class FlashCardModel extends Model
             'soal_dilewati'  =>  $soal_dilewati
         ]);
 
-        DB::table('users')->where('email',$email)->update([
+        DB::table('users')->where('email', $email)->update([
             'TotalScore' => $TotalScore,
         ]);
         DB::table('questions_flow')->where('email',$email)->update([

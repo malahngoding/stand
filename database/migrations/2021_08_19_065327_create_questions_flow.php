@@ -16,12 +16,8 @@ class CreateQuestionsFlow extends Migration
         Schema::create('questions_flow', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('email');
-            $table->string('QuizGroup')->nullable();
-            $table->string('noQuiz')->nullable();
-            $table->string('jumlahbenar')->nullable();
-            $table->string('soaldilewati')->nullable();
-            $table->string('CurrentScore')->nullable();
-            $table->string('TotalCurrent')->nullable();
+            $table->string('QuizGroup')->default(1);
+            $table->string('noQuiz')->default(1);
             $table->timestamps();
         });
     }
