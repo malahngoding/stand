@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('isQuizGroup')->default('1');
-            $table->string('TotalScore')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

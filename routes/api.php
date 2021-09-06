@@ -36,9 +36,10 @@ Route::get('/questions/get/{id}', [FlashCardController::class, 'get']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/quiz-group', [QuizController::class, 'getQuizGroup'])->name('quiz-group');
 Route::post('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->name('quiz-group-name');
+Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup']);
+
 
 Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score');
 Route::post('/post-result', [FlashCardController::class, 'postResult'])->name('post-result');
 
 Route::get('/quiz-result/{email}', [FlashCardController::class, 'getQuizResult']);
-
