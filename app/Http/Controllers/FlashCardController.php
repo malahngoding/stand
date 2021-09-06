@@ -90,10 +90,10 @@ class FlashCardController extends Controller
         $akurasi = $request->akurasi;
         $rata_rata = $request->rata_rata;
         $nilai = $request->nilai;
-        $TotalScore = $request->TotalScore;
+        $totalscore = $request->totalscore;
         $soal_dilewati = $request->soal_dilewati;
         $QuizGroup = $request->QuizGroup;
-        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $TotalScore, $soal_dilewati, $QuizGroup);
+        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
 
         return response($postResultData);
     }
