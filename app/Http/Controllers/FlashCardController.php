@@ -83,15 +83,15 @@ class FlashCardController extends Controller
     }
     public function postResult(Request $request)
     {
-
-        $email = $request->email;
-        $jawaban_benar = $request->jawaban_benar;
-        $akurasi = $request->akurasi;
-        $rata_rata = $request->rata_rata;
-        $nilai = $request->nilai;
-        $TotalScore = $request->TotalScore;
-        $soal_dilewati = $request->soal_dilewati;
-        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $TotalScore, $soal_dilewati);
+        $email=$request->email;
+        $jawaban_benar=$request->jawaban_benar;
+        $akurasi=$request->akurasi;
+        $rata_rata=$request->rata_rata;
+        $nilai=$request->nilai;
+        $TotalScore=$request->TotalScore;
+        $soal_dilewati=$request->soal_dilewati;
+        $QuizGroup = $request->QuizGroup;
+        $postResultData = FlashCardModel::postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati,$QuizGroup);
 
         return response($postResultData);
     }
