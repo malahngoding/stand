@@ -56,7 +56,7 @@ class FlashCardModel extends Model
     public static function getDataTotalScore($email)
     {
 
-        $user = DB::table('users')->where('email', $email)->first();
+        $user = DB::table('quiz_result')->where('email', $email)->first();
 
         return $user;
     }
@@ -69,12 +69,10 @@ class FlashCardModel extends Model
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,
             'rata_rata' => $rata_rata,
-            'soal_dilewati'  =>  $soal_dilewati
-        ]);
-
-        DB::table('users')->where('email', $email)->update([
+            'soal_dilewati'  =>  $soal_dilewati,
             'TotalScore' => $TotalScore,
         ]);
+
         DB::table('questions_flow')->where('email',$email)->update([
             'QuizGroup' => $QuizGroup,
         ]);
