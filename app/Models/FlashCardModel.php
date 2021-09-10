@@ -73,7 +73,12 @@ class FlashCardModel extends Model
             'totalscore' => $totalscore,
         ]);
 
-        DB::table('questions_flow')->where('email',$email)->update([
+
+        DB::table('users')->where('email', $email)->update([
+            'TotalScore' => $TotalScore,
+        ]);
+
+        DB::table('questions_flow')->where('email', $email)->update([
             'QuizGroup' => $QuizGroup,
         ]);
     }
@@ -82,7 +87,7 @@ class FlashCardModel extends Model
     {
         $get = DB::table('quiz_result')
             ->where('email', $email)
-            ->get();
+            ->first();
 
         return $get;
     }

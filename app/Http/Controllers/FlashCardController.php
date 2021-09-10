@@ -19,32 +19,50 @@ class FlashCardController extends Controller
     }
     public function getQuizGroupName(Request $request)
     {
-        $get = FlashCardModel::getQuizGroupName($request->email);
         $insert = FlashCardModel::checkEmailOnUsersAndQuizResult($request->email);
         $joss = DB::table('quiz_question_group')
+            ->select('id')
             ->get();
+
+        $data = DB::table('questions_flow')
+            ->where('email', $request->email)
+            ->get();
+
+        $array_question_group = [];
+        foreach ($joss as $item) {
+            array_push(
+                $array_question_group,
+                $item->id,
+            );
+        }
 
         if (count($insert) === 0) {
             FlashCardModel::insertEmail($request->email);
         }
-        if (count($get) === 0) {
+
+        if (!$data->isEmpty()) {
+
+            // emailnya ada/true
+
+            $get = FlashCardModel::getQuizGroupName($request->email);
+
+            // email ada tapi quiz group gaada
+
+            if (in_array($data[0]->QuizGroup, $array_question_group)) {
+                return response()->json($get);
+            } else {
+                return response()->json($get);
+            }
+        } else {
+
+            // emailnya ga ada/false
+
             $cek = DB::table('questions_flow')
                 ->insert([
                     'email' => $request->email,
                 ]);
-            // $jos = DB::table('quiz_question_group')
-            //     ->where('id', 1)
-            //     ->get();
             $mantap = FlashCardModel::getQuizGroupName($request->email);
             return response()->json($mantap);
-
-            // if ($cek[0]->QuizGroup < count($joss)) {
-            //     return response()->json($mantap);
-            // }
-            // $data = [$joss, $jos];
-            // return response()->json($mantap[0]->noQuiz);
-        } else {
-            return response()->json($get);
         }
     }
 
