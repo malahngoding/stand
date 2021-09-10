@@ -61,7 +61,11 @@ class FlashCardModel extends Model
         return $user;
     }
 
+<<<<<<< Updated upstream
     public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$TotalScore,$soal_dilewati,$QuizGroup)
+=======
+    public static function postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
+>>>>>>> Stashed changes
 
     {
         DB::table('quiz_result')->where('email', $email)->update([
@@ -72,10 +76,14 @@ class FlashCardModel extends Model
             'soal_dilewati'  =>  $soal_dilewati
         ]);
 
+<<<<<<< Updated upstream
         DB::table('users')->where('email', $email)->update([
             'TotalScore' => $TotalScore,
         ]);
         DB::table('questions_flow')->where('email',$email)->update([
+=======
+        DB::table('questions_flow')->where('email', $email)->update([
+>>>>>>> Stashed changes
             'QuizGroup' => $QuizGroup,
         ]);
     }
@@ -84,7 +92,7 @@ class FlashCardModel extends Model
     {
         $get = DB::table('quiz_result')
             ->where('email', $email)
-            ->get();
+            ->first();
 
         return $get;
     }
