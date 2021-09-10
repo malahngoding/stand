@@ -13,18 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            QuestionSeeder::class,
-            QuizQuestionGroupSeeder::class,
-            PHP2QuestionSeeder::class,
-            HTML1QuestionSeeder::class,
-            HTML2QuestionSeeder::class,
-            PemrogramanDasar1QuestionSeeder::class,
-            PemrogramanDasar2QuestionSeeder::class,
-            CLevel1QuestionSeeder::class,
-            CLevel2QuestionSeeder::class,
-            JavaLevel1QuestionSeeder::class
-        ]);
+        // \App\Models\User::factory(10)->create();
     }
 }
