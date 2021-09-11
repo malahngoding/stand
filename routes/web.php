@@ -14,5 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'name' => 'Hello Malah Ngoding!',
+    ]);
+});
+
+Route::post('/', function () {
+    return response()->json([
+        'name' => 'Post Malah Ngoding!',
+    ]);
+});
+
+Route::put('/', function () {
+    return response()->json([
+        'name' => 'Put Malah Ngoding!',
+    ]);
+});
+
+Route::delete('/', function () {
+    return response()->json([
+        'name' => 'Delete Malah Ngoding!',
+    ]);
 });
