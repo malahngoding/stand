@@ -41,4 +41,53 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Check if User Exist.
+     *
+     * @param string
+     * @return boolean
+     */
+    public static function checkAlreadyRegistered($email)
+    {
+        $count = User::where('email', $email)->count();
+        if ($count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Check if User Exist.
+     *
+     * @param string name
+     * @param string email
+     * @param string password(bcrypted)
+     * @param string csrfToken
+     * @return void
+     */
+    public static function register($name, $email, $password, $csrfToken)
+    {
+        User::insert([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
+            'remember_token' => $csrfToken,
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+    }
+
+    /**
+     * Get User with Email.
+     *
+     * @param string email
+     * @return User
+     */
+    public static function getUserWithEmail($email)
+    {
+        return User::where('email', $email)->first();
+    }
 }
