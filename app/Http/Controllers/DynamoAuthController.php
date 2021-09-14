@@ -23,7 +23,7 @@ class DynamoAuthController extends Controller
                     'email' => $authenticatedUser->email,
                     'name' => $authenticatedUser->name,
                 ],
-                'messages' => 'Successfully Logged In!'
+                'messages' => 'Successfully Logged In!',
             ]);
         } else {
             return response()->json([
@@ -39,8 +39,9 @@ class DynamoAuthController extends Controller
         $email = $request->email;
         $password = bcrypt($request->password);
         $csrfToken = $request->csrfToken;
+        $authProvider = $request->authProvider;
 
-        $alreadyRegistered = User::checkAlreadyRegistered($email);
+        $alreadyRegistered = User::checkAlreadyRegistered($email, $authProvider);
 
         if ($alreadyRegistered) {
             return response()->json([
@@ -48,7 +49,7 @@ class DynamoAuthController extends Controller
                 'messages' => 'User with ' . $email . ' already registered'
             ], 400);
         } else {
-            User::register($name, $email, $password, $csrfToken);
+            User::register($name, $email, $password, $csrfToken, $authProvider);
             return response()->json([
                 'status' => 'SUCCESS',
                 'messages' => 'Registered user ' . $email . '.'
@@ -56,13 +57,23 @@ class DynamoAuthController extends Controller
         }
     }
 
-    public function debug()
+    public function handshake(Request $request)
     {
+        $provider = $request->provider;
+        $email = $request->email;
+
+        $key = env('JWT_KEY');
+        $payload = array(
+            "iss" => env('APP_URL'),
+            "aud" => env('FRONTEND_URL'),
+        );
+
+        $jwt = JWT::encode($payload, $key);
+
         return response()->json([
             'status' => 'SUCCESS',
-            'a' => env('APP_URL'),
-            'b' => env('FRONTEND_URL'),
-            'c' => env('JWT_KEY')
+            'messages' => 'Great handhsake' . $provider . $email,
+            'token' => $jwt
         ]);
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
+
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'auth_provider'
     ];
 
     /**
@@ -45,12 +47,13 @@ class User extends Authenticatable
     /**
      * Check if User Exist.
      *
-     * @param string
+     * @param string email
+     * @param string authProvider
      * @return boolean
      */
-    public static function checkAlreadyRegistered($email)
+    public static function checkAlreadyRegistered($email, $authProvider)
     {
-        $count = User::where('email', $email)->count();
+        $count = User::where('email', $email)->where('auth_provider', $authProvider)->count();
         if ($count > 0) {
             return true;
         } else {
@@ -65,15 +68,18 @@ class User extends Authenticatable
      * @param string email
      * @param string password(bcrypted)
      * @param string csrfToken
+     * @param string authProvider
      * @return void
      */
-    public static function register($name, $email, $password, $csrfToken)
+    public static function register($name, $email, $password, $csrfToken, $authProvider)
     {
         User::insert([
+            'uuid' => Str::uuid(),
             'name' => $name,
             'email' => $email,
             'password' => $password,
             'remember_token' => $csrfToken,
+            'auth_provider' => $authProvider,
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
@@ -88,6 +94,18 @@ class User extends Authenticatable
      */
     public static function getUserWithEmail($email)
     {
-        return User::where('email', $email)->first();
+        return User::where('email', $email)->where('auth_provider', 'credentials')->first();
+    }
+
+    /**
+     * Handshake UUID
+     *
+     * @param string email
+     * @param string email
+     * @return User
+     */
+    public static function getUserUUID($email, $authProvider)
+    {
+        return User::where('email', $email)->where('auth_provider', $authProvider)->first()->uuid;
     }
 }
