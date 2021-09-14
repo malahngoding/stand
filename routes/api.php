@@ -16,13 +16,6 @@ use App\Http\Controllers\DynamoAuthController;
 |
 */
 
-Route::get('/dynamo', [DynamoAuthController::class, 'debug']);
 Route::post('/dynamo/login', [DynamoAuthController::class, 'login']);
 Route::post('/dynamo/registration', [DynamoAuthController::class, 'register']);
-
 Route::post('/dynamo/handshake', [DynamoAuthController::class, 'handshake']);
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

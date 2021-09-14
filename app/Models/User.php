@@ -108,4 +108,14 @@ class User extends Authenticatable
     {
         return User::where('auth_provider', $authProvider)->where('email', $email)->first()->uuid;
     }
+
+    public static function checkWhoExist($who)
+    {
+        $count = User::where('uuid', $who)->count();
+        if ($count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
