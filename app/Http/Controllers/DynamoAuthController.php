@@ -59,21 +59,43 @@ class DynamoAuthController extends Controller
 
     public function handshake(Request $request)
     {
-        $provider = $request->provider;
+        $authProvider = $request->authProvider;
         $email = $request->email;
 
+        $alreadyRegistered = User::checkAlreadyRegistered($email, $authProvider);
+
         $key = env('JWT_KEY');
-        $payload = array(
-            "iss" => env('APP_URL'),
-            "aud" => env('FRONTEND_URL'),
-        );
 
-        $jwt = JWT::encode($payload, $key);
+        if ($alreadyRegistered) {
+            $payload = array(
+                "iss" => env('APP_URL'),
+                "aud" => env('FRONTEND_URL'),
+                "who" => User::getUserUUID($email, $authProvider),
+            );
 
-        return response()->json([
-            'status' => 'SUCCESS',
-            'messages' => 'Great handhsake' . $provider . $email,
-            'token' => $jwt
-        ]);
+            $jwt = JWT::encode($payload, $key);
+
+            return response()->json([
+                'status' => 'SUCCESS',
+                'messages' => 'Great handhsake' . $authProvider . $email,
+                'token' => $jwt
+            ]);
+        } else {
+            User::register($authProvider . '$name', $email, $authProvider . '$password', $authProvider . '$csrfToken', $authProvider);
+
+            $payload = array(
+                "iss" => env('APP_URL'),
+                "aud" => env('FRONTEND_URL'),
+                "who" => User::getUserUUID($email, $authProvider),
+            );
+
+            $jwt = JWT::encode($payload, $key);
+
+            return response()->json([
+                'status' => 'SUCCESS',
+                'messages' => 'Great handhsake' . $authProvider . $email,
+                'token' => $jwt
+            ]);
+        }
     }
 }

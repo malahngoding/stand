@@ -53,7 +53,7 @@ class User extends Authenticatable
      */
     public static function checkAlreadyRegistered($email, $authProvider)
     {
-        $count = User::where('email', $email)->where('auth_provider', $authProvider)->count();
+        $count = User::where('auth_provider', $authProvider)->where('email', $email)->count();
         if ($count > 0) {
             return true;
         } else {
@@ -94,7 +94,7 @@ class User extends Authenticatable
      */
     public static function getUserWithEmail($email)
     {
-        return User::where('email', $email)->where('auth_provider', 'credentials')->first();
+        return User::where('auth_provider', 'credentials')->where('email', $email)->first();
     }
 
     /**
@@ -106,6 +106,6 @@ class User extends Authenticatable
      */
     public static function getUserUUID($email, $authProvider)
     {
-        return User::where('email', $email)->where('auth_provider', $authProvider)->first()->uuid;
+        return User::where('auth_provider', $authProvider)->where('email', $email)->first()->uuid;
     }
 }
