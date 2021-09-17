@@ -19,6 +19,14 @@ class DynamoMiddleware
     public function handle(Request $request, Closure $next)
     {
         $jwt  = $request->header('Authorization');
+
+        if (!$jwt) {
+            return response()->json([
+                'status' => 'NOT_AUTHORIZED',
+                'messages' => 'This user are not authorized for this',
+            ], 401);
+        }
+
         $key = env('JWT_KEY');
         $audience = env('FRONTEND_URL');
 

@@ -19,3 +19,5 @@ use App\Http\Controllers\DynamoAuthController;
 Route::post('/dynamo/login', [DynamoAuthController::class, 'login']);
 Route::post('/dynamo/registration', [DynamoAuthController::class, 'register']);
 Route::post('/dynamo/handshake', [DynamoAuthController::class, 'handshake']);
+
+Route::get('/dynamo', [DynamoAuthController::class, 'dynamo'])->middleware('dynamo');

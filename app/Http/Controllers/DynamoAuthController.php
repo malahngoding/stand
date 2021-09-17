@@ -98,4 +98,12 @@ class DynamoAuthController extends Controller
             ]);
         }
     }
+
+    public function dynamo(Request $request)
+    {
+        return response()->json([
+            'status' => 'SUCCESS', 'message' => 'You are authenticated',
+
+        ]);
+    }
 }
