@@ -26,15 +26,15 @@ class QuestionSeeder extends Seeder
         $faker_answer4 = implode("|", $array_answer4);
         $array_answer5 = array('James Gosling', 'Brendan Eich', 'Guido van Rossum', 'Mark Zuckerberg');
         $faker_answer5 = implode("|", $array_answer5);
-        $array_answer6 = array('E-book digital', 'E-commerce', 'E-goverment', 'E-mail', 'E-wallet');
+        $array_answer6 = array('E-book digital',  'E-goverment', 'E-mail', 'E-wallet');
         $answer6 = implode("|", $array_answer6);
-        $array_answer7 = array('Recycle Bin', 'Network Places', 'My Document', 'My Computer', 'Internet Explorer');
+        $array_answer7 = array('Network Places', 'My Document', 'My Computer', 'Internet Explorer');
         $answer7 = implode("|", $array_answer7);
-        $array_answer8 = array('LAN', 'WAN', 'MAN', 'PAN', 'CAN');
+        $array_answer8 = array('WAN', 'MAN', 'PAN', 'CAN');
         $answer8 = implode("|", $array_answer8);
-        $array_answer9 = array('Ctrl + O', 'Ctrl + P', 'Ctrl + C', 'Ctrl + A', 'Ctrl + U');
+        $array_answer9 = array('Ctrl + O', 'Ctrl + P',  'Ctrl + A', 'Ctrl + U');
         $answer9 = implode("|", $array_answer9);
-        $array_answer10 = array('Teknologi Informasi dan Komunikasi', 'Teknologi Industri dan Komunikasi', 'Teknologi Interface dan Komputer', 'Teknologi Input dan Komputer', 'Semua jawaban salah');
+        $array_answer10 = array('Teknologi Industri dan Komunikasi', 'Teknologi Interface dan Komputer', 'Teknologi Input dan Komputer', 'Semua jawaban salah');
         $answer10 = implode("|", $array_answer10);
 
         $id = DB::table('questions')->insertGetId(
@@ -99,7 +99,7 @@ class QuestionSeeder extends Seeder
                 'question' => "Peranan komputer dalam bidang dunia usaha adalah membuka peluang bisnis baru dan mengembangkan perdagangan melalui…
                 ",
                 'incorrect_answer' => $answer6,
-                'correct_answer' => 1,
+                'correct_answer' => 'E-commerce',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -113,7 +113,7 @@ class QuestionSeeder extends Seeder
                 'question' => "Guna menghapus file dapat dilakukan dengan cara klik nama file kemudian klik ikon Delete, dan secara otomatis file akan masuk ke dalam folder…
                 ",
                 'incorrect_answer' => $answer7,
-                'correct_answer' => 0,
+                'correct_answer' => 'Recycle Bin',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -126,7 +126,7 @@ class QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Suatu jaringan komputer yang menghubungkan suatu komputer dengan komputer lain dengan jarak yang terbatas disebut dengan?",
                 'incorrect_answer' => $answer8,
-                'correct_answer' => 0,
+                'correct_answer' => 'LAN',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -139,7 +139,7 @@ class QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Perintah copy atau salin dapat dilakukan dengan kombinasi tombol pada keyboard dengan menekan...",
                 'incorrect_answer' => $answer9,
-                'correct_answer' => 2,
+                'correct_answer' => 'Ctrl + C',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -152,7 +152,7 @@ class QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "TIK adalah singkatan dari...",
                 'incorrect_answer' => $answer10,
-                'correct_answer' => 0,
+                'correct_answer' => 'Teknologi Informasi dan Komunikasi',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),

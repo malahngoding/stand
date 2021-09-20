@@ -61,7 +61,7 @@ class FlashCardModel extends Model
         return $user;
     }
 
-    public static function postDataResult($email,$nilai,$jawaban_benar,$akurasi,$rata_rata,$totalscore,$soal_dilewati,$QuizGroup)
+    public static function postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
 
     {
         DB::table('quiz_result')->where('email', $email)->update([
@@ -73,7 +73,7 @@ class FlashCardModel extends Model
             'totalscore' => $totalscore,
         ]);
 
-        DB::table('questions_flow')->where('email',$email)->update([
+        DB::table('questions_flow')->where('email', $email)->update([
             'QuizGroup' => $QuizGroup,
         ]);
     }
@@ -82,7 +82,7 @@ class FlashCardModel extends Model
     {
         $get = DB::table('quiz_result')
             ->where('email', $email)
-            ->get();
+            ->first();
 
         return $get;
     }

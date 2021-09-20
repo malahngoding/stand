@@ -14,19 +14,19 @@ class PHP2QuestionSeeder extends Seeder
      */
     public function run()
     {
-        $array_answer1 = array('number_format() ', ' md5()', 'ltrim()', 'date()');
+        $array_answer1 = array('number_format() ',  'ltrim()', 'date()');
         $answer1 = implode("|", $array_answer1);
-        $array_answer2 = array('date()', 'min()', 'max()', 'md5()');
+        $array_answer2 = array('date()', 'max()', 'md5()');
         $answer2 = implode("|", $array_answer2);
-        $array_answer3 = array('count()', 'in_array()', 'substr()', 'trim()');
+        $array_answer3 = array('in_array()', 'substr()', 'trim()');
         $answer3 = implode("|", $array_answer3);
-        $array_answer4 = array('rand()', 'ceil()', 'round()', ' rtrim()');
+        $array_answer4 = array('ceil()', 'round()', ' rtrim()');
         $answer4 = implode("|", $array_answer4);
-        $array_answer5 = array('$_SERVER', '$_REQUEST', '$_FIND', '$_ENV');
+        $array_answer5 = array('$_SERVER', '$_REQUEST', '$_ENV');
         $answer5 = implode("|", $array_answer5);
-        $array_answer6 = array('Benar', 'Salah', 'a dan b salah', 'Tidak diketahui');
+        $array_answer6 = array('Salah', 'a dan b salah', 'Tidak diketahui');
         $answer6 = implode("|", $array_answer6);
-        $array_answer7 = array('for', 'for in', 'foreach', 'while');
+        $array_answer7 = array('for', 'foreach', 'while');
         $answer7 = implode("|", $array_answer7);
 
         DB::table('quiz_question')->insert(
@@ -36,7 +36,7 @@ class PHP2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Fungsi/method untuk membuat enskripsi di PHP adalah?",
                 'incorrect_answer' => $answer1,
-                'correct_answer' => 1,
+                'correct_answer' => ' md5()',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -50,7 +50,7 @@ class PHP2QuestionSeeder extends Seeder
                 'question' => "Fungsi untuk membuat tanggal di PHP adalah?
                 ",
                 'incorrect_answer' => $answer2,
-                'correct_answer' => 0,
+                'correct_answer' => 'min()',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -63,7 +63,7 @@ class PHP2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Fungsi untuk menghitung jumlah elemen array di PHP adalah?",
                 'incorrect_answer' => $answer3,
-                'correct_answer' => 0,
+                'correct_answer' => 'count()',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -76,7 +76,7 @@ class PHP2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Untuk membuat angka acak di PHP menggunakan fungsi?",
                 'incorrect_answer' => $answer4,
-                'correct_answer' => 0,
+                'correct_answer' => 'rand()',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -89,7 +89,7 @@ class PHP2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Berikut ini beberapa variabel global di PHP, kecuali...",
                 'incorrect_answer' => $answer5,
-                'correct_answer' => 2,
+                'correct_answer' => '$_FIND',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -102,7 +102,7 @@ class PHP2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Apakah array multidimensi dapat digunakan untuk membuat matriks?",
                 'incorrect_answer' => $answer6,
-                'correct_answer' => 0,
+                'correct_answer' => 'Benar',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -114,8 +114,8 @@ class PHP2QuestionSeeder extends Seeder
                 'no_quiz' => 7,
                 'score' => 20,
                 'question' => "Untuk menampilkan elemen array kita bisa menggunakan perulangan berikut, kecuali...",
-                'incorrect_answer' => $answer5,
-                'correct_answer' => 1,
+                'incorrect_answer' => $answer7,
+                'correct_answer' => 'for in',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
