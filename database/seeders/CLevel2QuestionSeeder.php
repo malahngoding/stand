@@ -16,7 +16,7 @@ class CLevel2QuestionSeeder extends Seeder
      */
     public function run()
     {
-        $array_answer1 = array('Menampilkan output', 'Membersihkan layar', 'Menahan tampilan output', 'Menampilkan karakter tertentu');
+        $array_answer1 = array( 'Membersihkan layar', 'Menahan tampilan output', 'Menampilkan karakter tertentu');
         $answer1 = implode("|", $array_answer1);
         $array_answer2 = array('void', 'return', 'get', 'break');
         $answer2 = implode("|", $array_answer2);
@@ -44,7 +44,7 @@ class CLevel2QuestionSeeder extends Seeder
                 'score' => 20,
                 'question' => "Fungsi dari perintah Clrscr adalah?",
                 'incorrect_answer' => $answer1,
-                'correct_answer' => 1,
+                'correct_answer' => 'Menampilkan output',
                 'picture' => "2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg",
                 'created_at' => now(),
                 'updated_at' => now(),
