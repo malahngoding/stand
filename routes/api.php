@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashMenu;
+use App\Http\Controllers\DashMenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,4 @@ Route::post('/dynamo/registration', [DynamoAuthController::class, 'register']);
 Route::post('/dynamo/handshake', [DynamoAuthController::class, 'handshake']);
 
 Route::get('/dynamo', [DynamoAuthController::class, 'dynamo'])->middleware('dynamo');
+Route::get('/dash-question-answer', [DashMenuController::class, 'QuestionAnswer'])->middleware('dynamo');
