@@ -23,4 +23,25 @@ Route::post('/dynamo/registration', [DynamoAuthController::class, 'register']);
 Route::post('/dynamo/handshake', [DynamoAuthController::class, 'handshake']);
 
 Route::get('/dynamo', [DynamoAuthController::class, 'dynamo'])->middleware('dynamo');
+
 Route::get('/dash-question-answer', [DashMenuController::class, 'QuestionAnswer'])->middleware('dynamo');
+Route::get('/echo', function () {
+    return response()->json(['echo' => 'Malah Ngoding']);
+});
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+
+#MOVE TO FEATURE CMS BRANCH
+Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
+Route::get('/questions/get/{id}', [FlashCardController::class, 'get']);
+
+Route::post('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->name('quiz-group-name');
+Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup']);
+Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score');
+Route::post('/post-result', [FlashCardController::class, 'postResult'])->name('post-result');
+Route::get('/quiz-result/{email}', [FlashCardController::class, 'getQuizResult']);
