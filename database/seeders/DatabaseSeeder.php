@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $this->call([
-            QuestionSeeder::class,
             QuizQuestionGroupSeeder::class,
             PHP2QuestionSeeder::class,
             HTML1QuestionSeeder::class,
