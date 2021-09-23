@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DynamoAuthController;
+use App\Http\Controllers\FlashCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +38,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
 
 
 #MOVE TO FEATURE CMS BRANCH
-Route::get('/profile/get/{email}', [ProfileController::class, 'get']);
-Route::get('/questions/get/{id}', [FlashCardController::class, 'get']);
-
-Route::post('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->name('quiz-group-name');
-Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup']);
-Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score');
-Route::post('/post-result', [FlashCardController::class, 'postResult'])->name('post-result');
-Route::get('/quiz-result/{email}', [FlashCardController::class, 'getQuizResult']);
+Route::get('/profile/get/{email}', [ProfileController::class, 'get'])->middleware('dynamo');
+Route::get('/questions/get/{id}', [FlashCardController::class, 'get'])->middleware('dynamo');
+Route::post('/quiz-group-name', [FlashCardController::class, 'getQuizGroupName'])->middleware('dynamo');
+Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup'])->middleware('dynamo');
+Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score')->middleware('dynamo');
+Route::post('/post-result', [FlashCardController::class, 'postResult'])->middleware('dynamo');
+Route::get('/quiz-result/{email}', [FlashCardController::class, 'getQuizResult'])->middleware('dynamo');
