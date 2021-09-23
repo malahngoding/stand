@@ -27,5 +27,17 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        $this->call([
+            QuestionSeeder::class,
+            QuizQuestionGroupSeeder::class,
+            PHP2QuestionSeeder::class,
+            HTML1QuestionSeeder::class,
+            HTML2QuestionSeeder::class,
+            PemrogramanDasar1QuestionSeeder::class,
+            PemrogramanDasar2QuestionSeeder::class,
+            CLevel1QuestionSeeder::class,
+            CLevel2QuestionSeeder::class,
+            JavaLevel1QuestionSeeder::class
+        ]);
     }
 }
