@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleQuestionController;
 use App\Http\Controllers\DashMenu;
 use App\Http\Controllers\DashMenuController;
 use Illuminate\Http\Request;
@@ -8,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ProfileController;
+use App\Models\ArticleQuestionModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +49,7 @@ Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup'
 Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score')->middleware('dynamo');
 Route::post('/post-result', [FlashCardController::class, 'postResult'])->middleware('dynamo');
 Route::get('/quiz-result/{email}', [FlashCardController::class, 'getQuizResult'])->middleware('dynamo');
+
+Route::get('/article-question/getQuestion', [ArticleQuestionController::class, 'getQuestion'])->middleware('dynamo');
+Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
+Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
