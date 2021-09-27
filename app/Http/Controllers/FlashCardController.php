@@ -12,20 +12,20 @@ class FlashCardController extends Controller
     public function updateQuizGroup(Request $request)
     {
         DB::table('questions_flow')
-            ->where('email', $request->email)
+            ->where('users_uuid', $request->who)
             ->update([
                 'QuizGroup' => $request->QuizGroup
             ]);
     }
     public function getQuizGroupName(Request $request)
     {
-        $insert = FlashCardModel::checkEmailOnUsersAndQuizResult($request->email);
+        $insert = FlashCardModel::checkEmailOnUsersAndQuizResult($request->who);
         $joss = DB::table('quiz_question_group')
             ->select('id')
             ->get();
 
         $data = DB::table('questions_flow')
-            ->where('email', $request->email)
+            ->where('users_uuid', $request->who)
             ->get();
 
         $array_question_group = [];
@@ -37,14 +37,14 @@ class FlashCardController extends Controller
         }
 
         if (count($insert) === 0) {
-            FlashCardModel::insertEmail($request->email);
+            FlashCardModel::insertEmail($request->who);
         }
 
         if (!$data->isEmpty()) {
 
             // emailnya ada/true
 
-            $get = FlashCardModel::getQuizGroupName($request->email);
+            $get = FlashCardModel::getQuizGroupName($request->who);
 
             // email ada tapi quiz group gaada
 
@@ -59,16 +59,16 @@ class FlashCardController extends Controller
 
             $cek = DB::table('questions_flow')
                 ->insert([
-                    'email' => $request->email,
+                    'users_uuid' => $request->who,
                 ]);
-            $mantap = FlashCardModel::getQuizGroupName($request->email);
+            $mantap = FlashCardModel::getQuizGroupName($request->who);
             return response()->json($mantap);
         }
     }
 
     public function getQuizResult(Request $request)
     {
-        $get = FlashCardModel::getQuizResult($request->email);
+        $get = FlashCardModel::getQuizResult($request->who);
         return response()->json($get);
     }
 
@@ -96,14 +96,14 @@ class FlashCardController extends Controller
     public function getTotalScore(Request $request)
     {
 
-        $email = $request->email;
-        $getTotalScore = FlashCardModel::getDataTotalScore($email);
+        $who = $request->who;
+        $getTotalScore = FlashCardModel::getDataTotalScore($who);
 
         return response()->json($getTotalScore);
     }
     public function postResult(Request $request)
     {
-        $email = $request->email;
+        $who = $request->who;
         $jawaban_benar = $request->jawaban_benar;
         $akurasi = $request->akurasi;
         $rata_rata = $request->rata_rata;
@@ -111,7 +111,7 @@ class FlashCardController extends Controller
         $totalscore = $request->totalscore;
         $soal_dilewati = $request->soal_dilewati;
         $QuizGroup = $request->QuizGroup;
-        $postResultData = FlashCardModel::postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
+        $postResultData = FlashCardModel::postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
 
         return response($postResultData);
     }

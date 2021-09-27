@@ -38,19 +38,12 @@ class QuestionSeeder extends Seeder
         $array_answer10 = array('Teknologi Industri dan Komunikasi', 'Teknologi Interface dan Komputer', 'Teknologi Input dan Komputer', 'Semua jawaban salah');
         $answer10 = implode("|", $array_answer10);
 
-        $id = DB::table('questions')->insertGetId(
-            [
-                'groupname' => 'PHP 1',
-                'questionscount' => $faker->numberBetween(1,),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
+
         DB::table('quiz_question')->insert([
             'no_quiz' => 1,
             'picture' => '2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg',
             'correct_answer' => 'Hypertext Preprocessor',
-            'quizgroup_id' => $id,
+            'quizgroup_id' => 1,
             'incorrect_answer' => $faker_answer1,
             'score' => 20,
             'question' => 'Kepanjangan dari PHP adalah',
@@ -59,7 +52,7 @@ class QuestionSeeder extends Seeder
             'no_quiz' => 2,
             'picture' => '2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg',
             'correct_answer' => '<?php … ?>',
-            'quizgroup_id' => $id,
+            'quizgroup_id' => 1,
             'incorrect_answer' => $faker_answer2,
             'score' => 20,
             'question' => 'Sebuah Kode PHP yang paling tepat pada awal dan akhir adalah',
@@ -68,7 +61,7 @@ class QuestionSeeder extends Seeder
             'no_quiz' => 3,
             'picture' => '2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg',
             'correct_answer' => 'a=[1,2.3,...];',
-            'quizgroup_id' => $id,
+            'quizgroup_id' => 1,
             'incorrect_answer' => $faker_answer3,
             'score' => 20,
             'question' => 'Method array di PHP adalah',
@@ -77,7 +70,7 @@ class QuestionSeeder extends Seeder
             'no_quiz' => 4,
             'picture' => '2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg',
             'correct_answer' => 'count()',
-            'quizgroup_id' => $id,
+            'quizgroup_id' => 1,
             'incorrect_answer' => $faker_answer4,
             'score' => 20,
             'question' => 'Fungsi untuk menghitung jumlah elemen array di PHP adalah',
@@ -86,7 +79,7 @@ class QuestionSeeder extends Seeder
             'no_quiz' => 5,
             'picture' => '2yW9qASopdHq00DOUtE7CkgkTsRlmOvHUjaR3ksm.jpg',
             'correct_answer' => 'Rasmus Lerdorf',
-            'quizgroup_id' => $id,
+            'quizgroup_id' => 1,
             'incorrect_answer' => $faker_answer5,
             'score' => 20,
             'question' => 'Bahasa skrip PHP pertama kali didesain oleh',

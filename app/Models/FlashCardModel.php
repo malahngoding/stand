@@ -21,52 +21,47 @@ class FlashCardModel extends Model
 
         return $user;
     }
-    public static function getQuizGroupName($email)
+    public static function getQuizGroupName($who)
     {
         $get = DB::table('questions_flow')
-            ->where('questions_flow.email', $email)
+            ->where('questions_flow.users_uuid', $who)
             ->join('quiz_question_group', 'questions_flow.QuizGroup', '=', 'quiz_question_group.id')
-            ->select('quiz_question_group.id', 'quiz_question_group.groupname', 'questions_flow.email', 'questions_flow.noQuiz', 'questions_flow.QuizGroup')
+            ->select('quiz_question_group.id', 'quiz_question_group.groupname', 'questions_flow.users_uuid', 'questions_flow.noQuiz', 'questions_flow.QuizGroup')
             ->get();
 
         return $get;
     }
 
-    public static function checkEmailOnUsersAndQuizResult($email)
+    public static function checkEmailOnUsersAndQuizResult($who)
     {
-        $get = DB::table('users')
-            ->where('email', $email)
-            ->get();
-        $get2 = DB::table('quiz_result')
-            ->where('email', $email)
+
+        $get = DB::table('quiz_result')
+            ->where('users_uuid', $who)
             ->get();
         return $get;
     }
-    public static function insertEmail($email)
+    public static function insertEmail($who)
     {
-        $get = DB::table('users')
+
+        $get = DB::table('quiz_result')
             ->updateOrInsert([
-                'email' => $email,
-            ]);
-        $get2 = DB::table('quiz_result')
-            ->updateOrInsert([
-                'email' => $email,
+                'users_uuid' => $who,
             ]);
         return $get;
     }
 
-    public static function getDataTotalScore($email)
+    public static function getDataTotalScore($who)
     {
 
-        $user = DB::table('quiz_result')->where('email', $email)->first();
+        $user = DB::table('quiz_result')->where('users_uuid', $who)->first();
 
         return $user;
     }
 
-    public static function postDataResult($email, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
+    public static function postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
 
     {
-        DB::table('quiz_result')->where('email', $email)->update([
+        DB::table('quiz_result')->where('users_uuid', $who)->update([
             'nilai' => $nilai,
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,
@@ -75,15 +70,15 @@ class FlashCardModel extends Model
             'totalscore' => $totalscore,
         ]);
 
-        DB::table('questions_flow')->where('email', $email)->update([
+        DB::table('questions_flow')->where('users_uuid', $who)->update([
             'QuizGroup' => $QuizGroup,
         ]);
     }
 
-    public static function getQuizResult($email)
+    public static function getQuizResult($who)
     {
         $get = DB::table('quiz_result')
-            ->where('email', $email)
+            ->where('users_uuid', $who)
             ->first();
 
         return $get;

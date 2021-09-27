@@ -17,7 +17,7 @@ class CreateQuestionsFlow extends Migration
 
         Schema::create('questions_flow', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('email');
+            $table->uuid('users_uuid');
             $table->string('QuizGroup')->default(1);
             $table->string('noQuiz')->default(1);
             $table->timestamps();

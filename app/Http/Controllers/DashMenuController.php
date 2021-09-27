@@ -12,13 +12,23 @@ class DashMenuController extends Controller
     {
         $who = $request->who;
         $data = Dash::UserExist($who);
-
         if ($data !== null) {
             return response()->json($data);
         } else {
-            Dash::UserNotExist($who);
-            $data2 = Dash::UserExist($who);
+            $data2 = Dash::UserNotExist($who);
             return response()->json($data2);
         }
+    }
+    public function CorrectAnswer(Request $request)
+    {
+        $who = $request->who;
+        $correct = Dash::CorrectAnswer($who);
+        return response()->json($correct);
+    }
+    public function IncorrectAnswer(Request $request)
+    {
+        $who = $request->who;
+        $incorrect = Dash::IncorectAnswer($who);
+        return response()->json($incorrect);
     }
 }
