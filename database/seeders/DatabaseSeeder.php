@@ -27,5 +27,20 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+<<<<<<< Updated upstream
+=======
+        $this->call([
+            QuizQuestionGroupSeeder::class,
+            PHP2QuestionSeeder::class,
+            HTML1QuestionSeeder::class,
+            HTML2QuestionSeeder::class,
+            PemrogramanDasar1QuestionSeeder::class,
+            PemrogramanDasar2QuestionSeeder::class,
+            CLevel1QuestionSeeder::class,
+            CLevel2QuestionSeeder::class,
+            JavaLevel1QuestionSeeder::class,
+            QuestionSeeder::class
+        ]);
+>>>>>>> Stashed changes
     }
 }
