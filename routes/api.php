@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashMenu;
 use App\Http\Controllers\DashMenuController;
+use App\Http\Controllers\FlashCardController;
+use App\Http\Controllers\ArticleQuestionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
