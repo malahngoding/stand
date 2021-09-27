@@ -27,8 +27,6 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-<<<<<<< Updated upstream
-=======
         $this->call([
             QuizQuestionGroupSeeder::class,
             PHP2QuestionSeeder::class,
@@ -39,8 +37,8 @@ class DatabaseSeeder extends Seeder
             CLevel1QuestionSeeder::class,
             CLevel2QuestionSeeder::class,
             JavaLevel1QuestionSeeder::class,
+            ArticlesSeeders::class,
             QuestionSeeder::class
         ]);
->>>>>>> Stashed changes
     }
 }

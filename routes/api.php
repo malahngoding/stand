@@ -24,8 +24,6 @@ Route::post('/dynamo/handshake', [DynamoAuthController::class, 'handshake']);
 
 Route::get('/dynamo', [DynamoAuthController::class, 'dynamo'])->middleware('dynamo');
 Route::get('/dash-question-answer', [DashMenuController::class, 'QuestionAnswer'])->middleware('dynamo');
-<<<<<<< Updated upstream
-=======
 Route::get('/dash-question-correct', [DashMenuController::class, 'CorrectAnswer'])->middleware('dynamo');
 Route::get('/dash-question-incorrect', [DashMenuController::class, 'IncorrectAnswer'])->middleware('dynamo');
 Route::get('/echo', function () {
@@ -51,4 +49,3 @@ Route::get('/quiz-result', [FlashCardController::class, 'getQuizResult'])->middl
 Route::get('/article-question/getQuestion', [ArticleQuestionController::class, 'getQuestion'])->middleware('dynamo');
 Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
 Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
->>>>>>> Stashed changes
