@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ArticleQuestionModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ArticleQuestionController extends Controller
 {
@@ -18,7 +20,6 @@ class ArticleQuestionController extends Controller
                 'correct_answer' => $item->correct_answer,
                 'incorrect_answer' => explode("|", $item->incorrect_answer)
             ]);
-
         }
 
 
@@ -31,7 +32,7 @@ class ArticleQuestionController extends Controller
     {
         $who = $request->who;
         $url = $request->url;
-        $check_user = ArticleQuestionModel::getDataUser($who,$url);
+        $check_user = ArticleQuestionModel::getDataUser($who, $url);
         return response()->json($check_user);
     }
     public function postResult(Request $request)
@@ -42,9 +43,27 @@ class ArticleQuestionController extends Controller
         $correct_answer = $request->correct_answer;
         $incorrect_answer = $request->incorrect_answer;
 
-        $postdata = ArticleQuestionModel::postData($who,$url,$correct_answer,$incorrect_answer);
+        $postdata = ArticleQuestionModel::postData($who, $url, $correct_answer, $incorrect_answer);
 
         return response()->json($postdata);
     }
+    public function postComment(Request $request)
+    {
+        $who = $request->who;
+        $name = $request->name;
+        $image = $request->image;
+        $url = $request->url;
+        $text = $request->text;
 
+        $post_comment = ArticleQuestionModel::handlePostComment($who, $name, $image, $url, $text);
+
+        return response()->json($post_comment);
+    }
+    public function getComment(Request $request)
+    {
+        $url = $request->url;
+        $get = ArticleQuestionModel::handleGetComment($url);
+
+        return response()->json($get);
+    }
 }
