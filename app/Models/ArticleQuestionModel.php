@@ -59,6 +59,7 @@ class ArticleQuestionModel extends Model
     {
         $get = DB::table('article_comment')
             ->where('url', $url)
+            ->orderBy('created_at', 'DESC')
             ->get();
         return $get;
     }
