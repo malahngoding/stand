@@ -17,8 +17,8 @@ class PaymentController extends Controller
     }
     public function updatePayment(Request $request)
     {
-        $who = $request->who;
         $status_pembayaran = $request->status_pembayaran;
+        $who = $request->who;
         $postdata = PaymentModel::updatePayment($who, $status_pembayaran);
         return response()->json($postdata);
     }
