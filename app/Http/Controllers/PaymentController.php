@@ -11,10 +11,15 @@ class PaymentController extends Controller
     {
         $insert = PaymentModel::checkUsersUUID($request->who);
         if (count($insert) === 0) {
-            $getData = PaymentModel::insertEmail($request->who);
-            return response()->json($getData);
-        } else {
-            return response()->json($insert);
+            PaymentModel::insertEmail($request->who);
         }
+        return response()->json($insert);
+    }
+    public function updatePayment(Request $request)
+    {
+        $who = $request->who;
+        $status_pembayaran = $request->status_pembayaran;
+        $postdata = PaymentModel::updatePayment($who, $status_pembayaran);
+        return response()->json($postdata);
     }
 }

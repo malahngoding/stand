@@ -12,18 +12,29 @@ class PaymentModel extends Model
     public static function checkUsersUUID($who)
     {
 
-        $get = DB::table('validation_payment')
+        $data = DB::table('validation_payment')
             ->where('users_uuid', $who)
             ->get();
-        return $get;
+        return $data;
     }
     public static function insertEmail($who)
     {
 
         $get = DB::table('validation_payment')
-            ->insert([
+            ->updateOrInsert([
                 'users_uuid' => $who,
+                'status_pembayaran' => 'false',
             ]);
         return $get;
+    }
+    public static function updatePayment($who,$status_pembayaran)
+    {
+
+        $user = DB::table('validation_payment')->where('users_uuid', $who)
+            ->update([
+                'users_uuid' => $who,
+                'status_pembayaran' => $status_pembayaran,
+            ]);
+        return $user;
     }
 }

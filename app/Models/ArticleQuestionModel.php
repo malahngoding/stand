@@ -41,7 +41,7 @@ class ArticleQuestionModel extends Model
             ]);
         return $user;
     }
-    public static function handlePostComment($who, $name, $image, $url, $text,)
+    public static function handlePostComment($who, $name, $image, $url, $text)
     {
         $upload = DB::table('article_comment')
             ->insert([

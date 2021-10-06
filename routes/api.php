@@ -51,7 +51,8 @@ Route::get('/article-question/getQuestion', [ArticleQuestionController::class, '
 Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
 Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
 
-Route::post('/only-pay-user', [PaymentController::class, 'getUserUUID'])->middleware('dynamo');
+Route::get('/get-only-pay-user', [PaymentController::class,'getUserUUID'])->middleware('dynamo');
+Route::post('/update-payment', [PaymentController::class,'updatePayment'])->middleware('dynamo');
 
 Route::post('/comment-for-article', [ArticleQuestionController::class, 'postComment'])->middleware('dynamo');
 Route::post('/get-comment-for-article', [ArticleQuestionController::class, 'getComment']);

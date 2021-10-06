@@ -16,7 +16,7 @@ class CreateValidationPayment extends Migration
         Schema::create('validation_payment', function (Blueprint $table) {
             $table->id()->autoIncrement();
 			$table->uuid('users_uuid');
-            $table->string('status_pembayaran')->default(false);
+            $table->string('status_pembayaran')->default('false');
             $table->timestamps();
         });
     }
