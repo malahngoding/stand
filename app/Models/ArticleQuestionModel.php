@@ -19,28 +19,48 @@ class ArticleQuestionModel extends Model
 
         return $user;
     }
-    public static function getDataUser($who,$url)
+    public static function getDataUser($who, $url)
     {
         $data = DB::table('dash_article_question_answer')
-        ->where('users_uuid', $who)
-        ->where('url', $url)
-        ->get();
+            ->where('users_uuid', $who)
+            ->where('url', $url)
+            ->get();
         return $data;
     }
 
 
-    public static function postData($who,$url,$correct_answer,$incorrect_answer)
+    public static function postData($who, $url, $correct_answer, $incorrect_answer)
     {
 
         $user = DB::table('dash_article_question_answer')->where('users_uuid', $who)
-        ->insert([
-            'users_uuid'=>$who,
-            'url'=>$url,
-            'correct_answer'  =>  $correct_answer,
-            'incorrect_answer' => $incorrect_answer,
-        ]);
+            ->insert([
+                'users_uuid' => $who,
+                'url' => $url,
+                'correct_answer'  =>  $correct_answer,
+                'incorrect_answer' => $incorrect_answer,
+            ]);
         return $user;
     }
-
-
+    public static function handlePostComment($who, $name, $image, $url, $text,)
+    {
+        $upload = DB::table('article_comment')
+            ->insert([
+                'users_uuid' => $who,
+                'users_name' => $name,
+                'users_picture' => $image,
+                'url' => $url,
+                'text' => $text,
+                "created_at" =>  \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
+            ]);
+        return $upload;
+    }
+    public static function handleGetComment($url)
+    {
+        $get = DB::table('article_comment')
+            ->where('url', $url)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        return $get;
+    }
 }
