@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PaidContentController extends Controller
 {
     //
-    public function getUserData(Request $request)
+    public function getUserDataHikingContent(Request $request)
     {
         $who = $request->who;
         $content = $request->content;
@@ -19,7 +19,7 @@ class PaidContentController extends Controller
             ->get();
         return response()->json($cek);
     }
-    public function posDataHikingContent(Request $request)
+    public function postDataHikingContent(Request $request)
     {
         $who = $request->who;
         $content = $request->content;
