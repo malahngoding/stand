@@ -22,6 +22,7 @@ class PaidContentController extends Controller
     public function postDataHikingContent(Request $request)
     {
         $who = $request->who;
+        $external_id = $request->external_id;
         $content = $request->content;
         $barcode = $request->barcode;
         $status = $request->status;
@@ -32,6 +33,7 @@ class PaidContentController extends Controller
         $get = DB::table('paid_content')
             ->updateOrInsert([
                 'uuid' => $who,
+                'external_id' => $external_id,
                 'content' => $content,
                 'barcode' => $barcode,
                 'status' => $status,
