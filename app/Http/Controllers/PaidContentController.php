@@ -17,7 +17,28 @@ class PaidContentController extends Controller
             ->where('uuid', $who)
             ->where('content', $content)
             ->get();
-
         return response()->json($cek);
+    }
+    public function posDataHikingContent(Request $request)
+    {
+        $who = $request->who;
+        $content = $request->content;
+        $barcode = $request->barcode;
+        $status = $request->status;
+        $buy_date = $request->buy_date;
+        $payment_date = $request->payment_date;
+        $updated_date = $request->payment_date;
+
+        $get = DB::table('paid_content')
+            ->updateOrInsert([
+                'uuid' => $who,
+                'content' => $content,
+                'barcode' => $barcode,
+                'status' => $status,
+                'buy_date' => $buy_date,
+                'payment_date' => $payment_date,
+                'updated_date' => $updated_date
+            ]);
+        return response()->json('Hasil', $get);
     }
 }
