@@ -16,6 +16,7 @@ class CreatePaidContent extends Migration
         Schema::create('paid_content', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
+            $table->string('external_id');
             $table->string('content');
             $table->string('barcode');
             $table->string('status');
