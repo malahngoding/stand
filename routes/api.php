@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\PaidContentController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::get('/quiz-result', [FlashCardController::class, 'getQuizResult'])->middl
 Route::get('/article-question/getQuestion', [ArticleQuestionController::class, 'getQuestion'])->middleware('dynamo');
 Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
 Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
+
+Route::get('/get-only-pay-user', [PaymentController::class,'getUserUUID'])->middleware('dynamo');
+Route::post('/update-payment', [PaymentController::class,'updatePayment'])->middleware('dynamo');
+
 Route::post('/comment-for-article', [ArticleQuestionController::class, 'postComment'])->middleware('dynamo');
 Route::post('/get-comment-for-article', [ArticleQuestionController::class, 'getComment']);
 Route::post('/paid-content-get', [PaidContentController::class, 'getUserData'])->middleware('dynamo');
