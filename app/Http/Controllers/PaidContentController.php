@@ -33,7 +33,7 @@ class PaidContentController extends Controller
         $get = DB::table('paid_content')
             ->updateOrInsert([
                 'uuid' => $who,
-                'external_id' => $external_id,
+                'external_id' => $who . $external_id,
                 'content' => $content,
                 'barcode' => $barcode,
                 'status' => $status,
