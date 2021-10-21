@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DynamoAuthController;
+use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
 
 /*
@@ -38,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
     return $request->user();
 });
 
+Route::get('/get-quiz-group-name', [FlashCardController::class, 'getQuizGroupNameTesting']);
 
 
 Route::get('/profile/get/{email}', [ProfileController::class, 'get'])->middleware('dynamo');
@@ -56,3 +58,4 @@ Route::post('/update-payment', [PaymentController::class,'updatePayment'])->midd
 
 Route::post('/comment-for-article', [ArticleQuestionController::class, 'postComment'])->middleware('dynamo');
 Route::post('/get-comment-for-article', [ArticleQuestionController::class, 'getComment']);
+Route::post('/paid-content-get', [PaidContentController::class, 'getUserData'])->middleware('dynamo');

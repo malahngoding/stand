@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 class FlashCardController extends Controller
 {
     #MOVE TO FEATURE CMS BRANCH
+    public function getQuizGroupNameTesting()
+    {
+        $test = DB::table('quiz_question_group')
+            ->get();
+        return response()->json($test);
+    }
     public function updateQuizGroup(Request $request)
     {
         DB::table('questions_flow')
