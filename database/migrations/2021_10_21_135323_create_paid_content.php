@@ -18,7 +18,7 @@ class CreatePaidContent extends Migration
             $table->uuid('uuid');
             $table->string('external_id');
             $table->string('content');
-            $table->string('barcode');
+            $table->string('qr_string');
             $table->string('status');
             $table->string('buy_date');
             $table->string('payment_date');
