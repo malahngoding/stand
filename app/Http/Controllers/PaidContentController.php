@@ -42,5 +42,6 @@ class PaidContentController extends Controller
                 'updated_date' => $updated_date
             ]);
         return response()->json('Hasil', $get);
+        //fixed
     }
 }
