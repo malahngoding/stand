@@ -44,4 +44,37 @@ class PaidContentController extends Controller
         return response()->json('Hasil', $get);
         //fixed
     }
+    public function getDataHikingCSS(Request $request)
+    {
+        $who = $request->who;
+        $content = 'CSS_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
+    }
+    public function getDataHikingHTML(Request $request)
+    {
+        $who = $request->who;
+        $content = 'HTML_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
+    }
+    public function getDataHikingJS(Request $request)
+    {
+        $who = $request->who;
+        $content = 'JS_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
+    }
 }
