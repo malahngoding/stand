@@ -33,7 +33,7 @@ class PaidContentController extends Controller
         $get = DB::table('paid_content')
             ->updateOrInsert([
                 'uuid' => $who,
-                'external_id' => $who . $external_id,
+                'external_id' => $external_id,
                 'content' => $content,
                 'barcode' => $barcode,
                 'status' => $status,
@@ -42,5 +42,38 @@ class PaidContentController extends Controller
                 'updated_date' => $updated_date
             ]);
         return response()->json('Hasil', $get);
+    }
+    public function getDataHikingCSS(Request $request)
+    {
+        $who = $request->who;
+        $content = 'CSS_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
+    }
+    public function getDataHikingHTML(Request $request)
+    {
+        $who = $request->who;
+        $content = 'HTML_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
+    }
+    public function getDataHikingJS(Request $request)
+    {
+        $who = $request->who;
+        $content = 'JS_HIKE';
+
+        $get = DB::table('paid_content')
+            ->where('uuid', $who)
+            ->where('content', $content)
+            ->get();
+        return response()->json($get);
     }
 }
