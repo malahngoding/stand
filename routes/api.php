@@ -60,6 +60,7 @@ Route::post('/comment-for-article', [ArticleQuestionController::class, 'postComm
 Route::post('/get-comment-for-article', [ArticleQuestionController::class, 'getComment']);
 Route::post('/paid-content-get', [PaidContentController::class, 'getUserDataHikingContent'])->middleware('dynamo');
 Route::post('/paid-content-post', [PaidContentController::class, 'postDataHikingContent'])->middleware('dynamo');
+Route::post('/update-paid-content-post', [PaidContentController::class, 'updateDataHikingContent'])->middleware('dynamo');
 Route::post('/paid-content-hiking-css', [PaidContentController::class, 'getDataHikingCSS'])->middleware('dynamo');
 Route::post('/paid-content-hiking-html', [PaidContentController::class, 'getDataHikingHTML'])->middleware('dynamo');
 Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHikingJS'])->middleware('dynamo');
