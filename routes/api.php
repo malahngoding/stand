@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DynamoAuthController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
 
@@ -64,3 +65,5 @@ Route::post('/update-paid-content-post', [PaidContentController::class, 'updateD
 Route::post('/paid-content-hiking-css', [PaidContentController::class, 'getDataHikingCSS'])->middleware('dynamo');
 Route::post('/paid-content-hiking-html', [PaidContentController::class, 'getDataHikingHTML'])->middleware('dynamo');
 Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHikingJS'])->middleware('dynamo');
+Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
+Route::get('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
