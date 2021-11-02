@@ -12,11 +12,11 @@ class FeedbackModel extends Model
     public static function checkUsersUUID($who)
     {
         $data = DB::table('feedback')
-            ->where('users_uuid', $who)
+            ->where('uuid', $who)
             ->get();
         return $data;
     }
-    public static function insertMessage($who,$message)
+    public static function insertMessage($who, $message)
     {
         $created_at = now();
         $updated_at = now();
