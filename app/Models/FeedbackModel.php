@@ -13,10 +13,11 @@ class FeedbackModel extends Model
     {
         $data = DB::table('feedback')
             ->where('users_uuid', $who)
+            ->select('message')
             ->get();
         return $data;
     }
-    public static function insertMessage($who,$message)
+    public static function insertMessage($who, $message)
     {
         $created_at = now();
         $updated_at = now();

@@ -66,4 +66,4 @@ Route::post('/paid-content-hiking-css', [PaidContentController::class, 'getDataH
 Route::post('/paid-content-hiking-html', [PaidContentController::class, 'getDataHikingHTML'])->middleware('dynamo');
 Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHikingJS'])->middleware('dynamo');
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
-Route::get('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
+Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
