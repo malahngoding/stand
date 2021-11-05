@@ -14,8 +14,8 @@ class CreateFeedback extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid');
+            $table->id()->autoIncrement();
+            $table->uuid('users_uuid');
             $table->longText('message');
             $table->timestamps();
         });
