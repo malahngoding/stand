@@ -4,6 +4,7 @@ use App\Http\Controllers\DashMenu;
 use App\Http\Controllers\DashMenuController;
 use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ArticleQuestionController;
+use App\Http\Controllers\AwesomeNoobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -67,3 +68,4 @@ Route::post('/paid-content-hiking-html', [PaidContentController::class, 'getData
 Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHikingJS'])->middleware('dynamo');
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
 Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
+Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
