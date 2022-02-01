@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\WebsocketDemoEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    broadcast(new WebsocketDemoEvent('some data'));
     return response()->json([
         'name' => 'Hello Malah Ngoding!',
     ]);
+    // return view('welcome');
 });
+
