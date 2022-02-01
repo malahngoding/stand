@@ -5,6 +5,7 @@ use App\Http\Controllers\DashMenuController;
 use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ArticleQuestionController;
 use App\Http\Controllers\AwesomeNoobController;
+use App\Http\Controllers\BadgeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -69,3 +70,4 @@ Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHi
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
 Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
+Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
