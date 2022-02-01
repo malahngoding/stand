@@ -19,4 +19,6 @@ Route::get('/', function () {
     return response()->json([
         'name' => 'Hello Malah Ngoding!',
     ]);
+    // return view('welcome');
 });
+
