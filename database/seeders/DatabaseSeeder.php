@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
             CLevel2QuestionSeeder::class,
             JavaLevel1QuestionSeeder::class,
             ArticlesSeeders::class,
-            QuestionSeeder::class
+            QuestionSeeder::class,
+            BadgeSeeder::class
         ]);
     }
 }
