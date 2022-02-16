@@ -73,3 +73,4 @@ Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->mi
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
 Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
 Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
+Route::get('/get-badge', [BadgeController::class, 'getDataBadge']);
