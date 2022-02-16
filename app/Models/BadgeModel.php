@@ -50,4 +50,11 @@ class BadgeModel extends Model
             ]);
         return $insertBadge;
     }
+
+    public static function getBadge()
+    {
+        $data = DB::table('badge')
+            ->get();
+        return $data;
+    }
 }
