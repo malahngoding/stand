@@ -12,6 +12,7 @@ use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BadgeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,4 @@ Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHi
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
 Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
+Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
