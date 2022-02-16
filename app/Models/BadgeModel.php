@@ -16,4 +16,5 @@ class BadgeModel extends Model
             ->get();
         return $data;
     }
+
 }

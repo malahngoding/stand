@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Database\Seeder;
 
 class BadgeSeeder extends Seeder
@@ -35,5 +34,6 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
+        
     }
 }
