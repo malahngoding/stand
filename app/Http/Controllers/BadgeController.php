@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\BadgeModel;
 use Illuminate\Http\Request;
-use App\Models\BadgeModel;
 
 class BadgeController extends Controller
 {
@@ -22,6 +21,7 @@ class BadgeController extends Controller
     {
         $get = BadgeModel::checkUsersUUID($request->who);
         return response()->json($get);
+    }
 
     public function getBadge(Request $request)
     {
