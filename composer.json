@@ -15,6 +15,7 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "nesbot/carbon": "^2.57",
         "pusher/pusher-php-server": "5.0"
     },
     "require-dev": {

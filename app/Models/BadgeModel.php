@@ -19,6 +19,27 @@ class BadgeModel extends Model
         return $data;
 
     }
+    public static function triggerAPI($uuid)
+    {
+        $data = DB::table('badge')
+            ->where('badge.users_uuid', $uuid)
+            ->join('badge_detail', 'badge.users_uuid', '=', 'badge_detail.users_uuid')
+            ->select('badge.*','badge_detail.*')
+            ->get();
+
+        return $data;
+
+    }
+    public static function getCreatedAt($uuid)
+    {
+        $data = DB::table('badge')
+            ->where('badge.users_uuid', $uuid)
+            ->select('created_at')
+            ->get();
+
+        return $data;
+
+    }
     public static function insertBadge($who)
     {
         $created_at = now();
