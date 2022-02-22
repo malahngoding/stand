@@ -11,7 +11,7 @@ use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\BadgeController;
 
 /*
 |--------------------------------------------------------------------------
