@@ -11,7 +11,7 @@ use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\BadgeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +72,4 @@ Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->midd
 Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
 Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
 Route::post('/awsm-level5', [BadgeController::class, 'awsmLevel5'])->middleware('dynamo');
+Route::get('/get-trigger-badge', [BadgeController::class, 'getDataBadge']);
