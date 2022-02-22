@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class BadgeSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class BadgeSeeder extends Seeder
     {
         DB::table('badge')->insert(
             [
-                'media' => storage_path('public/images/new-user.png'),
+                'media' => Storage::url('new-user.png'),
                 'type' => 'image',
                 'title' => 'New User Badge',
                 'description' => 'Beta',
@@ -26,7 +27,7 @@ class BadgeSeeder extends Seeder
         );
         DB::table('badge')->insert(
             [
-                'media' => storage_path('public/images/awsmnoob_level5.mp4'),
+                'media' => Storage::url('awsmnoob_level5.mp4'),
                 'type' => 'video',
                 'title' => 'Awesome Noob Level 5',
                 'description' => 'Beta',
@@ -34,6 +35,5 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
-        
     }
 }

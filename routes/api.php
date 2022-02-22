@@ -5,10 +5,8 @@ use App\Http\Controllers\DashMenuController;
 use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ArticleQuestionController;
 use App\Http\Controllers\AwesomeNoobController;
-use App\Http\Controllers\BadgeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
@@ -73,4 +71,5 @@ Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->mi
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
 Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
 Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
+Route::post('/awsm-level5', [BadgeController::class, 'awsmLevel5'])->middleware('dynamo');
 Route::get('/get-trigger-badge', [BadgeController::class, 'getDataBadge']);
