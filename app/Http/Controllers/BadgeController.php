@@ -15,7 +15,6 @@ class BadgeController extends Controller
             BadgeModel::insertBadgeDetail($request->who);
         }
         return response()->json($get);
-
     }
     public function getDataBadge(Request $request)
     {
@@ -28,25 +27,17 @@ class BadgeController extends Controller
         $who = $request->who;
         $get = BadgeModel::getBadge($who);
 
-        if (count($get) === 0) {
-            $insert = BadgeModel::newUserBadge($who);
-            return response()->json(true);
-        } else {
-            return response()->json($get);
-        }
+        return response()->json($get);
     }
-
-    public function awsmLevel5(Request $request)
+    public function badgeAssociation(Request $request)
     {
         $who = $request->who;
-        $badge = $request->badge_id;
-        $get = BadgeModel::level5Awsm($who, $badge);
+        $badge_id = $request->badge_id;
+        $check_user = BadgeModel::checkUserBadge($who, $badge_id);
 
-        if (count($get) === 0) {
-            $insert = BadgeModel::awsmLevel5Badge($who, $badge);
+        if (count($check_user) === 0) {
+            $assign = BadgeModel::assignBadge($who, $badge_id);
             return response()->json(true);
-        } else {
-            return response()->json($get);
         }
     }
 }
