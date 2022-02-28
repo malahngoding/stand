@@ -73,8 +73,9 @@ class User extends Authenticatable
      */
     public static function register($name, $email, $password, $csrfToken, $authProvider)
     {
+        $uuid = Str::uuid();
         User::insert([
-            'uuid' => Str::uuid(),
+            'uuid' => $uuid,
             'name' => $name,
             'email' => $email,
             'password' => $password,
@@ -84,6 +85,7 @@ class User extends Authenticatable
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        return $uuid;
     }
 
     /**

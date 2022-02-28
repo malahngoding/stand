@@ -69,7 +69,10 @@ Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHi
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
 Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
-Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
 Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
 Route::post('/awsm-level5', [BadgeController::class, 'awsmLevel5'])->middleware('dynamo');
 Route::get('/get-trigger-badge', [BadgeController::class, 'getDataBadge']);
+
+// Badge
+Route::post('/associate-badge', [BadgeController::class, 'badgeAssociation'])->middleware('dynamo');
+Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
