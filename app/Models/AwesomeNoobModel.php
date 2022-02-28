@@ -10,11 +10,19 @@ class AwesomeNoobModel extends Model
 {
     use HasFactory;
 
-    public static function checkUsers($who, $level)
+    public static function checkUsers($who,$level)
     {
         $data = DB::table('awesome_noob')
             ->where('users_uuid', $who)
             ->where('level', $level)
+            ->get();
+        return $data;
+    }
+    public static function check($who)
+    {
+        $data = DB::table('awesome_noob')
+            ->where('users_uuid', $who)
+            ->orderBy("created_at", "desc")
             ->get();
         return $data;
     }
