@@ -9,67 +9,53 @@ use Illuminate\Support\Facades\DB;
 class BadgeModel extends Model
 {
     use HasFactory;
-    public static function checkUsersUUID($who)
+    public $badge_uuid;
+
+    public static function triggerAPI()
     {
         $data = DB::table('badge')
-            ->where('badge.users_uuid', $who)
-            ->join('badge_detail', 'badge.users_uuid', '=', 'badge_detail.users_uuid')
-            ->select('badge.users_uuid','badge.title','badge.description','badge.media','badge_detail.long_description')
+            ->join('badge_detail', 'badge.id', '=', 'badge_detail.badge_uuid')
             ->get();
         return $data;
 
     }
-    public static function triggerAPI($uuid)
+    public static function getCreatedAt($who)
     {
-        $data = DB::table('badge')
-            ->where('badge.users_uuid', $uuid)
-            ->join('badge_detail', 'badge.users_uuid', '=', 'badge_detail.users_uuid')
-            ->select('badge.*','badge_detail.*')
-            ->get();
-
-        return $data;
-
-    }
-    public static function getCreatedAt($uuid)
-    {
-        $data = DB::table('badge')
-            ->where('badge.users_uuid', $uuid)
+        $data = DB::table('users')
+            ->where('uuid', $who)
             ->select('created_at')
             ->get();
 
         return $data;
 
     }
-    public static function insertBadge($who)
+    public static function insertBadgeYearUser($who)
     {
         $created_at = now();
         $updated_at = now();
-        $insertBadge = DB::table('badge')
-            ->updateOrInsert([
+        $insertBadge = DB::table('badge_association')
+            ->insert([
                 'users_uuid' => $who,
-                'title' => 'null',
-                'description' => 'null',
-                'media' => 'null',
+                'badge_uuid' => '3',
                 'created_at' => $created_at,
                 'updated_at' => $updated_at,
             ]);
         return $insertBadge;
     }
-    public static function insertBadgeDetail($who)
+    public static function getBadgeYearUser($who)
     {
-        $created_at = now();
-        $updated_at = now();
-        $insertBadge = DB::table('badge_detail')
-            ->updateOrInsert([
-                'users_uuid' => $who,
-                'title' => 'null',
-                'description' => 'null',
-                'media' => 'null',
-                'long_description' => 'null',
-                'created_at' => $created_at,
-                'updated_at' => $updated_at,
-            ]);
-        return $insertBadge;
+        $getBadge = DB::table('badge_association')
+        ->where('users_uuid', $who)
+        ->select('badge_uuid')
+        ->first();
+        $getBadgeID = $getBadge->badge_uuid;
+
+        $data = DB::table('badge')
+            ->join('badge_detail', 'badge.id', '=', 'badge_detail.badge_uuid')
+            ->where('badge.id',$getBadgeID)
+            ->get();
+
+        return $data;
     }
 
     public static function getBadge()

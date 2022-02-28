@@ -15,11 +15,8 @@ class CreateBadgeDetail extends Migration
     {
         Schema::create('badge_detail', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->uuid('users_uuid');
-            $table->string('title');
-            $table->string('description');
-            $table->string('long_description');
-            $table->string('media');
+            $table->string('badge_uuid');
+            $table->string('detail');
             $table->timestamps();
         });
     }

@@ -34,6 +34,25 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
-        
+        DB::table('badge')->insert(
+            [
+                'media' => '/static/images/badge_one_year.png',
+                'type' => 'image',
+                'title' => '1 Year User',
+                'description' => 'Badge use case #2 - 1-Year User',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('badge')->insert(
+            [
+                'media' => storage_path('public/images/badge-article.png'),
+                'type' => 'image',
+                'title' => 'Number of article read',
+                'description' => 'Beta',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
     }
 }

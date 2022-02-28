@@ -11,35 +11,30 @@ class BadgeController extends Controller
 {
     public $created_at;
 
-    public function postDataBadge(Request $request)
+    public function getDataYearUser(Request $request)
     {
-        $get = BadgeModel::checkUsersUUID($request->who);
-        if (count($get) === 0) {
-            BadgeModel::insertBadge($request->who);
-            BadgeModel::insertBadgeDetail($request->who);
-        }
-        return response()->json($get);
-
-    }
-    public function getDataBadge(Request $request)
-    {
-        $start = BadgeModel::getCreatedAt($request->uuid)->first();
+        $start = BadgeModel::getCreatedAt($request->who)->first();
         $this->created_at = $start->created_at;
-        echo $this->created_at;
-        echo "\n";
+        $date = Carbon::parse($this->created_at);
         $now = Carbon::now();
-        echo $now;
-        echo "\n";
-        $date_diff=$this->created_at->diffInDays($now);
-        echo $date_diff;
-        // $duedate = \Carbon\Carbon::now()->subDays($difference)->diffForHumans();
+        $date_diff=$date->diffInDays($now);
+
+
+        if ($date_diff >= 365) {
+            BadgeModel::insertBadgeYearUser($request->who);
+        }
+        $getData = BadgeModel::getBadgeYearUser($request->who);
+        return $getData;
         // echo $difference;
-        echo "\n";
         // $year = CarbonInterval::year();
         // echo $year;
         // echo "\n";
-        // $get = BadgeModel::triggerAPI($request->uuid);
         // return response()->json($get);
+    }
+    public function getDataBadge(Request $request)
+    {
+        $get = BadgeModel::triggerAPI();
+        return response()->json($get);
     }
 
     public function getBadge(Request $request)
