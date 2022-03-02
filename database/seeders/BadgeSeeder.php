@@ -15,9 +15,10 @@ class BadgeSeeder extends Seeder
      */
     public function run()
     {
+        $path = public_path();
         DB::table('badge')->insert(
             [
-                'media' => Storage::url('new-user.png'),
+                'media' => '/images/new-user.png',
                 'type' => 'image',
                 'title' => 'New User Badge',
                 'description' => 'Beta',
@@ -27,7 +28,7 @@ class BadgeSeeder extends Seeder
         );
         DB::table('badge')->insert(
             [
-                'media' => Storage::url('awsmnoob_level5.mp4'),
+                'media' => '/images/awsmnoob_level5.mp4',
                 'type' => 'video',
                 'title' => 'Awesome Noob Level 5',
                 'description' => 'Beta',
