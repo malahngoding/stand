@@ -52,7 +52,7 @@ class DynamoAuthController extends Controller
         } else {
             $uuid = User::register($name, $email, $password, $csrfToken, $authProvider);
             $badge_id = 1;
-            BadgeModel::newUserBadge($uuid, $badge_id);
+            BadgeModel::assignBadge($uuid, $badge_id);
             return response()->json(
                 [
                     'status' => 'SUCCESS',
@@ -88,7 +88,7 @@ class DynamoAuthController extends Controller
         } else {
             $uuid = User::register($authProvider . '$name', $email, $authProvider . '$password', $authProvider . '$csrfToken', $authProvider);
             $badge_id = 1;
-            BadgeModel::newUserBadge($uuid, $badge_id);
+            BadgeModel::assignBadge($uuid, $badge_id);
             $payload = array(
                 "iss" => env('APP_URL'),
                 "aud" => env('FRONTEND_URL'),
