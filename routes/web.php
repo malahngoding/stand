@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return [
-        "message" => "Hello future!"
+        "message" => "Hello future!",
+        "status" => "SUCCESS"
     ];
 });
