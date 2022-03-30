@@ -10,10 +10,11 @@ class ArticleQuestionModel extends Model
 {
     use HasFactory;
 
-    public static function getDataQuestion()
+    public static function getDataQuestion($question_url)
     {
 
         $user = DB::table('article_quiz')
+            ->where('url', $question_url)
             ->select('question', 'correct_answer', 'incorrect_answer')
             ->get();
 

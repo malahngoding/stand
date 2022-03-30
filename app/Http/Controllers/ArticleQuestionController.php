@@ -12,8 +12,9 @@ class ArticleQuestionController extends Controller
     public function getQuestion(Request $request)
     {
         $array_question = [];
+        $question_url = $request->url;
+        $getQuestion = ArticleQuestionModel::getDataQuestion($question_url);
 
-        $getQuestion = ArticleQuestionModel::getDataQuestion();
         foreach ($getQuestion as $item) {
             array_push($array_question, [
                 'question' => $item->question,
@@ -21,10 +22,6 @@ class ArticleQuestionController extends Controller
                 'incorrect_answer' => explode("|", $item->incorrect_answer)
             ]);
         }
-
-
-
-
         return response()->json($array_question);
     }
 
