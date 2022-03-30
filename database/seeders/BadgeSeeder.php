@@ -36,5 +36,15 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
+        DB::table('badge')->insert(
+            [
+                'media' => '/images/flashcard_level10.png',
+                'type' => 'image',
+                'title' => 'Flashcard Level 10',
+                'description' => 'Beta',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
     }
 }

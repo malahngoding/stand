@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BadgeModel;
 use App\Models\FlashCardModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class FlashCardController extends Controller
 {
+    public $groupname;
+    public $id;
+    public $noQuiz;
+    public $QuizGroup;
     #MOVE TO FEATURE CMS BRANCH
     public function getQuizGroupNameTesting()
     {
@@ -51,13 +57,21 @@ class FlashCardController extends Controller
             // emailnya ada/true
 
             $get = FlashCardModel::getQuizGroupName($request->who);
+            if (count($get)===0) {
+                return response()->json([]);
+            } else{
+                $this->groupname = $get[0]->groupname;
+                $this->id = $get[0]->id;
+                $this->noQuiz = $get[0]->noQuiz;
+                $this->QuizGroup = Crypt::encryptString($get[0]->QuizGroup);
+                $output = [['id'=>$this->id,'groupname'=>$this->groupname,'noQuiz'=>$this->noQuiz,'QuizGroup'=>$this->QuizGroup]];
+                // email ada tapi quiz group gaada
 
-            // email ada tapi quiz group gaada
-
-            if (in_array($data[0]->QuizGroup, $array_question_group)) {
-                return response()->json($get);
-            } else {
-                return response()->json($get);
+                if (in_array($data[0]->QuizGroup, $array_question_group)) {
+                    return response()->json($output);
+                } else {
+                    return response()->json($output);
+                }
             }
         } else {
 
@@ -72,6 +86,7 @@ class FlashCardController extends Controller
         }
     }
 
+
     public function getQuizResult(Request $request)
     {
         $get = FlashCardModel::getQuizResult($request->who);
@@ -83,7 +98,7 @@ class FlashCardController extends Controller
     {
         $array_question = [];
 
-        $id = $request->id;
+        $id = Crypt::decryptString($request->id);
         $getQuestion = FlashCardModel::getData($id);
         foreach ($getQuestion as $item) {
             array_push($array_question, [
@@ -116,9 +131,21 @@ class FlashCardController extends Controller
         $nilai = $request->nilai;
         $totalscore = $request->totalscore;
         $soal_dilewati = $request->soal_dilewati;
-        $QuizGroup = $request->QuizGroup;
+        $QuizGroup = Crypt::decryptString($request->QuizGroup) +1;
         $postResultData = FlashCardModel::postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
+        if ($QuizGroup === 11) {
+            $badge_id = 3;
+            $check_user = BadgeModel::checkUserBadge($who, $badge_id);
 
+            if (count($check_user) === 0) {
+                $assign = BadgeModel::assignBadge($who, $badge_id);
+                return response()->json(true);
+            }
+        }
         return response($postResultData);
+    }
+    public function badgeFlashCard(Request $request)
+    {
+        $get = FlashCardModel::getQuizGroupName($request->who);
     }
 }
