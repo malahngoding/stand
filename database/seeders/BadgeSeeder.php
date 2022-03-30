@@ -36,5 +36,15 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
+        DB::table('badge')->insert(
+            [
+                'media' => '/images/ten-question-correct-answer.png',
+                'type' => 'image',
+                'title' => '10 Article Question Correct Answer',
+                'description' => 'Beta',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
     }
 }
