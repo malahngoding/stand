@@ -51,6 +51,8 @@ Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup'
 Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score')->middleware('dynamo');
 Route::post('/post-result', [FlashCardController::class, 'postResult'])->middleware('dynamo');
 Route::get('/quiz-result', [FlashCardController::class, 'getQuizResult'])->middleware('dynamo');
+
+// Article Question
 Route::get('/article-question/getQuestion', [ArticleQuestionController::class, 'getQuestion'])->middleware('dynamo');
 Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
 Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
