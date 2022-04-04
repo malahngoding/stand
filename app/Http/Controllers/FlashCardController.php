@@ -134,7 +134,7 @@ class FlashCardController extends Controller
         $QuizGroup = Crypt::decryptString($request->QuizGroup) +1;
         $postResultData = FlashCardModel::postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
         if ($QuizGroup === 11) {
-            $badge_id = 3;
+            $badge_id = 4;
             $check_user = BadgeModel::checkUserBadge($who, $badge_id);
 
             if (count($check_user) === 0) {

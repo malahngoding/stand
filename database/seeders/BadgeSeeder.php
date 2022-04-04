@@ -38,6 +38,16 @@ class BadgeSeeder extends Seeder
         );
         DB::table('badge')->insert(
             [
+                'media' => '/images/ten-question-correct-answer.png',
+                'type' => 'image',
+                'title' => '10 Article Question Correct Answer',
+                'description' => 'Beta',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+        DB::table('badge')->insert(
+            [
                 'media' => '/images/flashcard_level10.png',
                 'type' => 'image',
                 'title' => 'Flashcard Level 10',
@@ -46,11 +56,11 @@ class BadgeSeeder extends Seeder
                 'updated_at' => now(),
             ]
         );
-      DB::table('badge')->insert(
+        DB::table('badge')->insert(
             [
-                'media' => '/images/ten-question-correct-answer.png',
+                'media' => '/images/article_wrong_five_answer.png',
                 'type' => 'image',
-                'title' => '10 Article Question Correct Answer',
+                'title' => '5 Article Question Wrong Answer',
                 'description' => 'Beta',
                 'created_at' => now(),
                 'updated_at' => now(),
