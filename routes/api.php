@@ -12,6 +12,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BadgeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +81,6 @@ Route::get('/get-trigger-badge', [BadgeController::class, 'getDataBadge']);
 // Badge
 Route::post('/associate-badge', [BadgeController::class, 'badgeAssociation'])->middleware('dynamo');
 Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
+
+//
+Route::get('/@{username}', [ProfileController::class, 'detailProfile']);
