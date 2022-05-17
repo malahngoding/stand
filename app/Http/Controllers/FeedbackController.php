@@ -24,10 +24,10 @@ class FeedbackController extends Controller
     public function getDataFeedback(Request $request)
     {
         $get = FeedbackModel::checkUsersUUID($request->who);
-        return response()->json($get);
+        // return response()->json($get);
         if (count($get) === 0) {
-            return response()->json(['condition'=>'null']);
-        }else{
+            return response()->json(['condition' => 'null']);
+        } else {
             return response()->json($get);
         }
     }
