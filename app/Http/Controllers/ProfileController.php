@@ -72,4 +72,10 @@ class ProfileController extends Controller
             );
         }
     }
+    public function detailProfile(Request $request)
+    {
+        $username = $request->username;
+        $get = ProfileModel::detailProfile($username);
+        return response()->json($get);
+    }
 }
