@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Dash;
+use App\Models\BadgeModel;
 
 class DashMenuController extends Controller
 {
@@ -22,13 +23,30 @@ class DashMenuController extends Controller
     public function CorrectAnswer(Request $request)
     {
         $who = $request->who;
+        $badge_id = 3;
         $correct = Dash::CorrectAnswer($who);
+        $check_user = BadgeModel::checkUserBadge($who, $badge_id);
+
+        if (count($correct) > 9) {
+            if (count($check_user) === 0) {
+                BadgeModel::assignBadge($who, $badge_id);
+            }
+        }
         return response()->json($correct);
     }
     public function IncorrectAnswer(Request $request)
     {
         $who = $request->who;
         $incorrect = Dash::IncorectAnswer($who);
+        if (count($incorrect) > 4) {
+            $badge_id = 5;
+            $check_user = BadgeModel::checkUserBadge($who, $badge_id);
+
+            if (count($check_user) === 0) {
+                $assign = BadgeModel::assignBadge($who, $badge_id);
+                return response()->json(true);
+            }
+        }
         return response()->json($incorrect);
     }
 }

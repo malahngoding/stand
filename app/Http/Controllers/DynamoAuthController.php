@@ -6,6 +6,7 @@ use App\Models\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\BadgeModel;
 
 class DynamoAuthController extends Controller
 {
@@ -40,20 +41,24 @@ class DynamoAuthController extends Controller
         $password = bcrypt($request->password);
         $csrfToken = $request->csrfToken;
         $authProvider = $request->authProvider;
+        $who = $request->who;
 
         $alreadyRegistered = User::checkAlreadyRegistered($email, $authProvider);
-
         if ($alreadyRegistered) {
             return response()->json([
                 'status' => 'FAILED',
                 'messages' => 'User with ' . $email . ' already registered'
             ], 400);
         } else {
-            User::register($name, $email, $password, $csrfToken, $authProvider);
-            return response()->json([
-                'status' => 'SUCCESS',
-                'messages' => 'Registered user ' . $email . '.'
-            ]);
+            $uuid = User::register($name, $email, $password, $csrfToken, $authProvider);
+            $badge_id = 1;
+            BadgeModel::assignBadge($uuid, $badge_id);
+            return response()->json(
+                [
+                    'status' => 'SUCCESS',
+                    'messages' => 'Registered user ' . $email . '.'
+                ]
+            );
         }
     }
 
@@ -81,8 +86,9 @@ class DynamoAuthController extends Controller
                 'token' => $jwt
             ]);
         } else {
-            User::register($authProvider . '$name', $email, $authProvider . '$password', $authProvider . '$csrfToken', $authProvider);
-
+            $uuid = User::register($authProvider . '$name', $email, $authProvider . '$password', $authProvider . '$csrfToken', $authProvider);
+            $badge_id = 1;
+            BadgeModel::assignBadge($uuid, $badge_id);
             $payload = array(
                 "iss" => env('APP_URL'),
                 "aud" => env('FRONTEND_URL'),
@@ -90,7 +96,6 @@ class DynamoAuthController extends Controller
             );
 
             $jwt = JWT::encode($payload, $key);
-
             return response()->json([
                 'status' => 'SUCCESS',
                 'messages' => 'Great handhsake' . $authProvider . $email,

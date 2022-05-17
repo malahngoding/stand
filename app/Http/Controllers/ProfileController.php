@@ -72,8 +72,6 @@ class ProfileController extends Controller
             );
         }
     }
-<<<<<<< Updated upstream
-=======
     public function detailProfile(Request $request)
     {
         $username = $request->username;
@@ -110,5 +108,5 @@ class ProfileController extends Controller
             ]);
         return response()->json($who);
     }
->>>>>>> Stashed changes
+
 }

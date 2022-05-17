@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArticleQuestionModel;
+use App\Models\BadgeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,8 +13,9 @@ class ArticleQuestionController extends Controller
     public function getQuestion(Request $request)
     {
         $array_question = [];
+        $question_url = $request->url;
+        $getQuestion = ArticleQuestionModel::getDataQuestion($question_url);
 
-        $getQuestion = ArticleQuestionModel::getDataQuestion();
         foreach ($getQuestion as $item) {
             array_push($array_question, [
                 'question' => $item->question,
@@ -21,10 +23,6 @@ class ArticleQuestionController extends Controller
                 'incorrect_answer' => explode("|", $item->incorrect_answer)
             ]);
         }
-
-
-
-
         return response()->json($array_question);
     }
 
@@ -42,7 +40,6 @@ class ArticleQuestionController extends Controller
         $who = $request->who;
         $correct_answer = $request->correct_answer;
         $incorrect_answer = $request->incorrect_answer;
-
         $postdata = ArticleQuestionModel::postData($who, $url, $correct_answer, $incorrect_answer);
 
         return response()->json($postdata);
@@ -54,7 +51,6 @@ class ArticleQuestionController extends Controller
         $image = $request->image;
         $url = $request->url;
         $text = $request->text;
-
         $post_comment = ArticleQuestionModel::handlePostComment($who, $name, $image, $url, $text);
 
         return response()->json($post_comment);

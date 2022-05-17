@@ -22,8 +22,6 @@ class ProfileModel extends Model
 
         return $user;
     }
-<<<<<<< Updated upstream
-=======
     public static function detailProfile($username)
     {
         $user = DB::table('users')
@@ -41,5 +39,5 @@ class ProfileModel extends Model
             ]);
         return $add;
     }
->>>>>>> Stashed changes
+
 }

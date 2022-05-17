@@ -4,13 +4,15 @@ use App\Http\Controllers\DashMenu;
 use App\Http\Controllers\DashMenuController;
 use App\Http\Controllers\FlashCardController;
 use App\Http\Controllers\ArticleQuestionController;
+use App\Http\Controllers\AwesomeNoobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\DynamoAuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaidContentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BadgeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,8 @@ Route::post('/quiz-group-update', [FlashCardController::class, 'updateQuizGroup'
 Route::post('/get-total-score', [FlashCardController::class, 'getTotalScore'])->name('get-total-score')->middleware('dynamo');
 Route::post('/post-result', [FlashCardController::class, 'postResult'])->middleware('dynamo');
 Route::get('/quiz-result', [FlashCardController::class, 'getQuizResult'])->middleware('dynamo');
+
+// Article Question
 Route::get('/article-question/getQuestion', [ArticleQuestionController::class, 'getQuestion'])->middleware('dynamo');
 Route::post('/article-question', [ArticleQuestionController::class, 'getUser'])->middleware('dynamo');
 Route::post('/post-article-question-result', [ArticleQuestionController::class, 'postResult'])->middleware('dynamo');
@@ -67,8 +71,8 @@ Route::post('/paid-content-hiking-html', [PaidContentController::class, 'getData
 Route::post('/paid-content-hiking-js', [PaidContentController::class, 'getDataHikingJS'])->middleware('dynamo');
 Route::post('/post-feedback', [FeedbackController::class, 'postDataFeedback'])->middleware('dynamo');
 Route::post('/get-feedback', [FeedbackController::class, 'getDataFeedback'])->middleware('dynamo');
-<<<<<<< Updated upstream
-=======
+
+// Badge
 Route::post('/awsm-noob-data', [AwesomeNoobController::class, 'postData'])->middleware('dynamo');
 Route::post('/check-awsm-noob', [AwesomeNoobController::class, 'checkData'])->middleware('dynamo');
 Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dynamo');
@@ -84,4 +88,4 @@ Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dyna
 Route::get('/@{username}', [ProfileController::class, 'detailProfile']);
 Route::post('/check-username', [ProfileController::class, 'checkUsername'])->middleware('dynamo');
 Route::post('/add-username', [ProfileController::class, 'addUsername'])->middleware('dynamo');
->>>>>>> Stashed changes
+

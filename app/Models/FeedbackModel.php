@@ -12,7 +12,8 @@ class FeedbackModel extends Model
     public static function checkUsersUUID($who)
     {
         $data = DB::table('feedback')
-            ->where('uuid', $who)
+            ->where('users_uuid', $who)
+            ->select('message')
             ->get();
         return $data;
     }
