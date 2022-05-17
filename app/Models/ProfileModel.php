@@ -30,4 +30,14 @@ class ProfileModel extends Model
             ->get();
         return $user;
     }
+    public static function addUsername($username, $who)
+    {
+        $add = DB::table('users')
+            ->where('uuid', $who)
+            ->update([
+                'username' => $username
+            ]);
+        return $add;
+    }
+
 }
