@@ -22,4 +22,22 @@ class ProfileModel extends Model
 
         return $user;
     }
+    public static function detailProfile($username)
+    {
+        $user = DB::table('users')
+            ->where('username', $username)
+            ->join('badge_association', 'badge_association.users_uuid', '=', 'users.uuid')
+            ->get();
+        return $user;
+    }
+    public static function addUsername($username, $who)
+    {
+        $add = DB::table('users')
+            ->where('uuid', $who)
+            ->update([
+                'username' => $username
+            ]);
+        return $add;
+    }
+
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeedbackModel;
+use App\Models\ProfileModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackController extends Controller
 {
@@ -22,13 +24,12 @@ class FeedbackController extends Controller
     public function getDataFeedback(Request $request)
     {
         $get = FeedbackModel::checkUsersUUID($request->who);
+        // return response()->json($get);
         if (count($get) === 0) {
-            return response()->json(['condition'=>'null']);
-        }else{
+            return response()->json(['condition' => 'null']);
+        } else {
             return response()->json($get);
         }
-
-
     }
     public function postDataFeedback(Request $request)
     {
@@ -62,7 +63,10 @@ class FeedbackController extends Controller
         }
         $message = $request->message;
         $who = $request->who;
+        $username = $request->username;
         $postdata = FeedbackModel::insertMessage($who, $message);
+        $addUsername = ProfileModel::addUsername($username, $who);
+
         return response()->json($postdata);
     }
 }
