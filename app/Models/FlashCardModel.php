@@ -58,11 +58,20 @@ class FlashCardModel extends Model
 
         return $user;
     }
+    public static function getDataRankedScore()
+    {
 
-    public static function postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
+        $user_ranked = DB::table('quiz_result')->orderByRaw('CONVERT(totalscore, SIGNED) desc')->select('id','name','totalscore')->limit(10)->get();
+
+        return $user_ranked;
+    }
+
+
+    public static function postDataResult($who,$name, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup)
 
     {
         DB::table('quiz_result')->where('users_uuid', $who)->update([
+            'name' => $name,
             'nilai' => $nilai,
             'jawaban_benar' => $jawaban_benar,
             'akurasi' => $akurasi,

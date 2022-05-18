@@ -76,6 +76,7 @@ Route::get('/get-badge', [BadgeController::class, 'getBadge'])->middleware('dyna
 Route::post('/badge', [BadgeController::class, 'postDataBadge'])->middleware('dynamo');
 Route::post('/awsm-level5', [BadgeController::class, 'awsmLevel5'])->middleware('dynamo');
 Route::get('/get-trigger-badge', [BadgeController::class, 'getDataBadge']);
+Route::get('/get-ranked-score', [FlashCardController::class, 'getDataRankedScore']);
 
 // Badge
 Route::post('/associate-badge', [BadgeController::class, 'badgeAssociation'])->middleware('dynamo');
