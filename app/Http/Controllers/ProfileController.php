@@ -80,8 +80,6 @@ class ProfileController extends Controller
         $getUserData = ProfileModel::getUserData($uuid);
         return response()->json($getUserData);
     }
-<<<<<<< Updated upstream
-=======
     public function checkUsername(Request $request)
     {
         $check = DB::table('users')->where('username', $request->username)->get();
@@ -112,5 +110,4 @@ class ProfileController extends Controller
             ]);
         return response()->json($who);
     }
->>>>>>> Stashed changes
 }

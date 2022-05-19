@@ -18,6 +18,7 @@ class CreateQuizResult extends Migration
         Schema::create('quiz_result', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->uuid('users_uuid');
+            $table->string('name')->nullable();
             $table->string('nilai')->default(0);
             $table->string('jawaban_benar')->default(0);;
             $table->string('rata_rata')->default(0);;

@@ -38,8 +38,6 @@ class ProfileModel extends Model
             ->get();
         return $data;
     }
-<<<<<<< Updated upstream
-=======
     public static function addUsername($username, $who)
     {
         $add = DB::table('users')
@@ -49,5 +47,4 @@ class ProfileModel extends Model
             ]);
         return $add;
     }
->>>>>>> Stashed changes
 }

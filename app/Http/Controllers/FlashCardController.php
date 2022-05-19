@@ -122,9 +122,16 @@ class FlashCardController extends Controller
 
         return response()->json($getTotalScore);
     }
+    public function getDataRankedScore()
+    {
+        $getRankedScore = FlashCardModel::getDataRankedScore();
+
+        return response()->json($getRankedScore);
+    }
     public function postResult(Request $request)
     {
         $who = $request->who;
+        $name = $request->name;
         $jawaban_benar = $request->jawaban_benar;
         $akurasi = $request->akurasi;
         $rata_rata = $request->rata_rata;
@@ -132,7 +139,7 @@ class FlashCardController extends Controller
         $totalscore = $request->totalscore;
         $soal_dilewati = $request->soal_dilewati;
         $QuizGroup = Crypt::decryptString($request->QuizGroup) +1;
-        $postResultData = FlashCardModel::postDataResult($who, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
+        $postResultData = FlashCardModel::postDataResult($who, $name, $nilai, $jawaban_benar, $akurasi, $rata_rata, $totalscore, $soal_dilewati, $QuizGroup);
         if ($QuizGroup === 11) {
             $badge_id = 4;
             $check_user = BadgeModel::checkUserBadge($who, $badge_id);
