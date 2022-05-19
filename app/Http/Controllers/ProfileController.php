@@ -75,7 +75,42 @@ class ProfileController extends Controller
     public function detailProfile(Request $request)
     {
         $username = $request->username;
-        $get = ProfileModel::detailProfile($username);
-        return response()->json($get);
+        $getUUID = ProfileModel::getUserUUID($username);
+        $uuid = $getUUID->uuid;
+        $getUserData = ProfileModel::getUserData($uuid);
+        return response()->json($getUserData);
     }
+<<<<<<< Updated upstream
+=======
+    public function checkUsername(Request $request)
+    {
+        $check = DB::table('users')->where('username', $request->username)->get();
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'username' => 'min:5|max:15',
+            ],
+        );
+
+        if ($validator->fails()) {
+            return response()->json('Username harus lebih dari 4 karakter dan kurang dari 15 karakter');
+        } else {
+            if (count($check) === 0) {
+                return response()->json('Username bisa dipakai');
+            } else {
+                return response()->json('Username sudah dipakai');
+            }
+        }
+    }
+    public function addUsername(Request $request)
+    {
+        $who = $request->who;
+        $add = DB::table('users')
+            ->where('uuid', $who)
+            ->insert([
+                'username' => $request->username
+            ]);
+        return response()->json($who);
+    }
+>>>>>>> Stashed changes
 }

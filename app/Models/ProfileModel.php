@@ -22,12 +22,32 @@ class ProfileModel extends Model
 
         return $user;
     }
-    public static function detailProfile($username)
+    public static function getUserUUID($username)
     {
         $user = DB::table('users')
             ->where('username', $username)
-            ->join('badge_association', 'badge_association.users_uuid', '=', 'users.uuid')
-            ->get();
+            ->first();
         return $user;
     }
+    public static function getUserData($uuid)
+    {
+        $data = DB::table('users')
+            ->join('badge_association', 'badge_association.users_uuid', '=', 'users.uuid')
+            ->join('badge', 'badge.id', '=', 'badge_association.badge_uuid')
+            ->where('users.uuid', '=', $uuid)
+            ->get();
+        return $data;
+    }
+<<<<<<< Updated upstream
+=======
+    public static function addUsername($username, $who)
+    {
+        $add = DB::table('users')
+            ->where('uuid', $who)
+            ->update([
+                'username' => $username
+            ]);
+        return $add;
+    }
+>>>>>>> Stashed changes
 }
