@@ -75,8 +75,10 @@ class ProfileController extends Controller
     public function detailProfile(Request $request)
     {
         $username = $request->username;
-        $get = ProfileModel::detailProfile($username);
-        return response()->json($get);
+        $getUUID = ProfileModel::getUserUUID($username);
+        $uuid = $getUUID->uuid;
+        $getUserData = ProfileModel::getUserData($uuid);
+        return response()->json($getUserData);
     }
     public function checkUsername(Request $request)
     {
@@ -108,5 +110,4 @@ class ProfileController extends Controller
             ]);
         return response()->json($who);
     }
-
 }
